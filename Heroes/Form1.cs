@@ -3,6 +3,7 @@ namespace Heroes
     public partial class Form1 : Form
     {
         List<Panel> panelesSubmenu = new List<Panel>();
+       
         public Form1()
         {
             InitializeComponent();
@@ -77,6 +78,12 @@ namespace Heroes
 
         private void abrirFormHijo(Form formHijo)
         {
+            
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.GetType() == formHijo.GetType()) return;
+            }
+
             if(formActivo != null)
             {
                 formActivo.Close();
