@@ -57,6 +57,7 @@
             this.textBoxNombrePersonaje = new System.Windows.Forms.TextBox();
             this.labelNombrePersonaje = new System.Windows.Forms.Label();
             this.panelImagenHeroe = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.pictureBoxImagenPersonaje = new System.Windows.Forms.PictureBox();
             this.buttonannadirImagen = new System.Windows.Forms.Button();
             this.openFileDialogImagenPersonaje = new System.Windows.Forms.OpenFileDialog();
@@ -143,6 +144,7 @@
             this.buttonEliminarPersonaje.TabIndex = 3;
             this.buttonEliminarPersonaje.Text = "Eliminar Personaje";
             this.buttonEliminarPersonaje.UseVisualStyleBackColor = false;
+            this.buttonEliminarPersonaje.Click += new System.EventHandler(this.buttonEliminarPersonaje_Click);
             // 
             // buttonActualizarPersonaje
             // 
@@ -159,6 +161,7 @@
             this.buttonActualizarPersonaje.TabIndex = 2;
             this.buttonActualizarPersonaje.Text = "Actualizar Personaje";
             this.buttonActualizarPersonaje.UseVisualStyleBackColor = false;
+            this.buttonActualizarPersonaje.Click += new System.EventHandler(this.buttonActualizarPersonaje_Click);
             // 
             // buttonBuscarPersonaje
             // 
@@ -385,7 +388,6 @@
             this.comboBoxSexoPersonaje.Name = "comboBoxSexoPersonaje";
             this.comboBoxSexoPersonaje.Size = new System.Drawing.Size(276, 33);
             this.comboBoxSexoPersonaje.TabIndex = 1;
-            this.comboBoxSexoPersonaje.SelectedIndexChanged += new System.EventHandler(this.comboBoxSexoPersonaje_SelectedIndexChanged);
             // 
             // labelSexoPersonaje
             // 
@@ -436,22 +438,32 @@
             // 
             // panelImagenHeroe
             // 
+            this.panelImagenHeroe.Controls.Add(this.label1);
             this.panelImagenHeroe.Controls.Add(this.pictureBoxImagenPersonaje);
             this.panelImagenHeroe.Controls.Add(this.buttonannadirImagen);
             this.panelImagenHeroe.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelImagenHeroe.Location = new System.Drawing.Point(286, 76);
             this.panelImagenHeroe.Name = "panelImagenHeroe";
-            this.panelImagenHeroe.Padding = new System.Windows.Forms.Padding(50);
+            this.panelImagenHeroe.Padding = new System.Windows.Forms.Padding(80);
             this.panelImagenHeroe.Size = new System.Drawing.Size(625, 540);
             this.panelImagenHeroe.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(5, 4);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(463, 25);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "*Nota: La búsqueda de personaje se hace por su nombre";
             // 
             // pictureBoxImagenPersonaje
             // 
             this.pictureBoxImagenPersonaje.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxImagenPersonaje.Image = global::Heroes.Properties.Resources.dc;
-            this.pictureBoxImagenPersonaje.Location = new System.Drawing.Point(50, 50);
+            this.pictureBoxImagenPersonaje.Location = new System.Drawing.Point(80, 80);
             this.pictureBoxImagenPersonaje.Name = "pictureBoxImagenPersonaje";
-            this.pictureBoxImagenPersonaje.Size = new System.Drawing.Size(525, 406);
+            this.pictureBoxImagenPersonaje.Size = new System.Drawing.Size(465, 346);
             this.pictureBoxImagenPersonaje.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxImagenPersonaje.TabIndex = 2;
             this.pictureBoxImagenPersonaje.TabStop = false;
@@ -461,9 +473,9 @@
             this.buttonannadirImagen.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.buttonannadirImagen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonannadirImagen.ForeColor = System.Drawing.Color.White;
-            this.buttonannadirImagen.Location = new System.Drawing.Point(50, 456);
+            this.buttonannadirImagen.Location = new System.Drawing.Point(80, 426);
             this.buttonannadirImagen.Name = "buttonannadirImagen";
-            this.buttonannadirImagen.Size = new System.Drawing.Size(525, 34);
+            this.buttonannadirImagen.Size = new System.Drawing.Size(465, 34);
             this.buttonannadirImagen.TabIndex = 1;
             this.buttonannadirImagen.Text = "Añadir Imagen";
             this.buttonannadirImagen.UseVisualStyleBackColor = true;
@@ -502,6 +514,7 @@
             this.panelNombrePersonaje.ResumeLayout(false);
             this.panelNombrePersonaje.PerformLayout();
             this.panelImagenHeroe.ResumeLayout(false);
+            this.panelImagenHeroe.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImagenPersonaje)).EndInit();
             this.ResumeLayout(false);
 
@@ -540,5 +553,6 @@
         private Button buttonannadirImagen;
         private PictureBox pictureBoxImagenPersonaje;
         private Button buttonCrearPersonaje;
+        private Label label1;
     }
 }

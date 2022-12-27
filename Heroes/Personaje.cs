@@ -16,11 +16,13 @@ namespace Heroes
         private Universo _universo;
         private int _edad;
         private bool _activo;
+        private Image _imagen;
 
 
         public string Nombre { get => _nombre; set
             {
                 _nombre = string.IsNullOrWhiteSpace(value) ? null : value;
+
                 onPropertyChanged("Nombre");
             }
         }
@@ -59,6 +61,13 @@ namespace Heroes
             {
                 _activo = value;
                 onPropertyChanged("Activo");
+            }
+        }
+
+        public Image Imagen { get => _imagen; set
+            {
+                _imagen = value;
+                onPropertyChanged("Imagen");
             }
         }
 
