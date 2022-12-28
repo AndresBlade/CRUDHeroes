@@ -66,6 +66,7 @@ namespace Heroes
 
         private void buttonRegistroPeliculas_Click(object sender, EventArgs e)
         {
+            abrirFormHijo(new RegistroPelicula());
             esconderSubmenu();
         }
 

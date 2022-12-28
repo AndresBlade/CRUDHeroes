@@ -131,12 +131,12 @@
             // 
             // buttonEliminarPersonaje
             // 
-            this.buttonEliminarPersonaje.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.buttonEliminarPersonaje.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.buttonEliminarPersonaje.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonEliminarPersonaje.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonShadow;
             this.buttonEliminarPersonaje.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonEliminarPersonaje.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonEliminarPersonaje.ForeColor = System.Drawing.Color.White;
+            this.buttonEliminarPersonaje.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.buttonEliminarPersonaje.Location = new System.Drawing.Point(0, 102);
             this.buttonEliminarPersonaje.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonEliminarPersonaje.Name = "buttonEliminarPersonaje";
@@ -148,7 +148,7 @@
             // 
             // buttonActualizarPersonaje
             // 
-            this.buttonActualizarPersonaje.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.buttonActualizarPersonaje.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.buttonActualizarPersonaje.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonActualizarPersonaje.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonShadow;
             this.buttonActualizarPersonaje.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -165,7 +165,7 @@
             // 
             // buttonBuscarPersonaje
             // 
-            this.buttonBuscarPersonaje.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.buttonBuscarPersonaje.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.buttonBuscarPersonaje.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonBuscarPersonaje.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonShadow;
             this.buttonBuscarPersonaje.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -182,7 +182,7 @@
             // 
             // buttonCrearPersonaje
             // 
-            this.buttonCrearPersonaje.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.buttonCrearPersonaje.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.buttonCrearPersonaje.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonCrearPersonaje.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonShadow;
             this.buttonCrearPersonaje.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -242,6 +242,11 @@
             this.numericUpDownEdadPersonaje.ForeColor = System.Drawing.Color.White;
             this.numericUpDownEdadPersonaje.Location = new System.Drawing.Point(0, 25);
             this.numericUpDownEdadPersonaje.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.numericUpDownEdadPersonaje.Maximum = new decimal(new int[] {
+            -1530494976,
+            232830,
+            0,
+            0});
             this.numericUpDownEdadPersonaje.Name = "numericUpDownEdadPersonaje";
             this.numericUpDownEdadPersonaje.Size = new System.Drawing.Size(276, 31);
             this.numericUpDownEdadPersonaje.TabIndex = 1;
@@ -451,6 +456,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(5, 4);
             this.label1.Name = "label1";
@@ -470,6 +476,7 @@
             // 
             // buttonannadirImagen
             // 
+            this.buttonannadirImagen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.buttonannadirImagen.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.buttonannadirImagen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonannadirImagen.ForeColor = System.Drawing.Color.White;
@@ -478,7 +485,7 @@
             this.buttonannadirImagen.Size = new System.Drawing.Size(465, 34);
             this.buttonannadirImagen.TabIndex = 1;
             this.buttonannadirImagen.Text = "Añadir Imagen";
-            this.buttonannadirImagen.UseVisualStyleBackColor = true;
+            this.buttonannadirImagen.UseVisualStyleBackColor = false;
             this.buttonannadirImagen.Click += new System.EventHandler(this.buttonannadirImagen_Click);
             // 
             // RegistroPersonaje
