@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Heroes
 {
+    //INotifyPropertyChanged permite que el enlace de datos sea bidireccional, el objeto destino notifica al objeto origen
     internal class Personaje : INotifyPropertyChanged
     {
         private string _nombre;
@@ -22,8 +23,7 @@ namespace Heroes
         public string Nombre { get => _nombre; set
             {
                 _nombre = string.IsNullOrWhiteSpace(value) ? null : value;
-
-                onPropertyChanged("Nombre");
+                onPropertyChanged("Nombre"); //función que notifica al objeto origen
             }
         }
         public Sexo Sexo { get => _sexo; set
@@ -75,6 +75,7 @@ namespace Heroes
 
         protected virtual void onPropertyChanged(string propertyName)
         {
+            //Si el personaje tiene todos los campos completos, habilitar los botones correspondientes
             if (PropertyChanged != null) {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 

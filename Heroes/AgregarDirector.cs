@@ -17,7 +17,7 @@ namespace Heroes
             InitializeComponent();
         }
 
-        public string NombreDirector { get; set; }
+        public string NombreDirector { get; set; } //Para poder acceder a la propiedad desde fuera del formulario, incluso luego de cerrarlo
 
         private void buttonAceptar_Click(object sender, EventArgs e)
         {

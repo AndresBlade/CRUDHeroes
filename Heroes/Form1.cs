@@ -3,7 +3,8 @@ namespace Heroes
     public partial class Form1 : Form
     {
         List<Panel> panelesSubmenu = new List<Panel>();
-       
+        //Código de video. Básicamente crear submenus (paneles) y mostrarlos o no (Visible) dependiendo de si se toca el botón correspondiente o no
+        //https://www.youtube.com/watch?v=3ni0V-l3Auw
         public Form1()
         {
             InitializeComponent();
@@ -82,9 +83,10 @@ namespace Heroes
             
             foreach (Form form in Application.OpenForms)
             {
+                //Si el formulario es el mismo, no cerrar el formulario
                 if (form.GetType() == formHijo.GetType()) return;
             }
-
+            
             if(formActivo != null)
             {
                 formActivo.Close();
@@ -97,8 +99,6 @@ namespace Heroes
             panelContenedor.Tag = formHijo;
             formHijo.BringToFront();
             formHijo.Show();
-
-            //OPCIONAL: Cuando se abra la misma instancia, no cerrar la instancia
         }
 
         #endregion

@@ -11,6 +11,7 @@ namespace Heroes
         private static string separador = ";";
         public static string SerializarPersonaje(Personaje personaje)
         {
+            //Devuelve una línea string con los datos del personaje separados por el separador
             string linea = string.Empty;
 
             linea += personaje.Nombre + separador;
@@ -52,6 +53,7 @@ namespace Heroes
 
         public static string SerializarPersonajes(List<Personaje> personajes)
         {
+            //Devuelve un string de un conjunto de lineas, cada linea es un personaje serializado
             string linea = string.Empty;
 
             foreach (Personaje personaje in personajes)
@@ -64,7 +66,7 @@ namespace Heroes
 
         public static List<Personaje> DeserializarPersonajes()
         {
-
+            //Devuelve la lista de personajes que se encuentra en listaPersonajes.txt
             List<Personaje> personajes = new List<Personaje>();
             string directorio = Application.StartupPath;
             string linea;
@@ -74,15 +76,16 @@ namespace Heroes
 
             linea = streamReader.ReadLine();
 
+            
             while (linea != null)
             {
 
-                if (string.IsNullOrWhiteSpace(linea))
+                if (string.IsNullOrWhiteSpace(linea)) //Si la línea está vacía. Cuando se elimina un personaje, la línea queda vacía
                 {
                     linea = streamReader.ReadLine();
                     continue;
                 }
-                string[] propiedadesPersonaje = linea.Split(separador);
+                string[] propiedadesPersonaje = linea.Split(separador); //devuele un arreglo. cada elemento del arreglo es una propiedad del personaje en string
                 Personaje personaje = new Personaje();
                 personaje.Nombre = propiedadesPersonaje[0];
                 personaje.Sexo = (Sexo)Enum.Parse(typeof(Sexo), propiedadesPersonaje[1]);
@@ -93,6 +96,7 @@ namespace Heroes
                 personaje.Activo = bool.Parse(propiedadesPersonaje[6]);
                 personaje.Imagen = Image.FromFile($@"{Application.StartupPath}/img/{personaje.Nombre}.jpg");
                 personajes.Add(personaje);
+
                 linea = streamReader.ReadLine();
             }
             streamReader.Close();
