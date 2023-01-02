@@ -71,6 +71,11 @@ namespace Heroes
             }
         }
 
+        public override string ToString()
+        {
+            return this.Nombre;
+        }
+
         public event PropertyChangedEventHandler? PropertyChanged;
 
         protected virtual void onPropertyChanged(string propertyName)

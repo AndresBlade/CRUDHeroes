@@ -32,12 +32,12 @@
             this.labelTitulo = new System.Windows.Forms.Label();
             this.panelDatosPelicula = new System.Windows.Forms.Panel();
             this.panelBotonesPelicula = new System.Windows.Forms.Panel();
-            this.buttonCrearPersonaje = new System.Windows.Forms.Button();
+            this.buttonEliminarPelicula = new System.Windows.Forms.Button();
             this.buttonActualizarPelicula = new System.Windows.Forms.Button();
             this.buttonBuscarPelicula = new System.Windows.Forms.Button();
             this.buttonCrearPelicula = new System.Windows.Forms.Button();
             this.panelPersonajes = new System.Windows.Forms.Panel();
-            this.comboBoxPersonajesPelicula = new System.Windows.Forms.ComboBox();
+            this.checkedListBoxPersonajes = new System.Windows.Forms.CheckedListBox();
             this.labelPersonajesPelicula = new System.Windows.Forms.Label();
             this.panelUniversoPelicula = new System.Windows.Forms.Panel();
             this.comboBoxUniversoPelicula = new System.Windows.Forms.ComboBox();
@@ -59,6 +59,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBoxImagenPelicula = new System.Windows.Forms.PictureBox();
             this.buttonannadirImagen = new System.Windows.Forms.Button();
+            this.openFileDialogImagenPelicula = new System.Windows.Forms.OpenFileDialog();
             this.panelTitulo.SuspendLayout();
             this.panelDatosPelicula.SuspendLayout();
             this.panelBotonesPelicula.SuspendLayout();
@@ -109,36 +110,37 @@
             this.panelDatosPelicula.Location = new System.Drawing.Point(0, 76);
             this.panelDatosPelicula.Name = "panelDatosPelicula";
             this.panelDatosPelicula.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.panelDatosPelicula.Size = new System.Drawing.Size(286, 540);
+            this.panelDatosPelicula.Size = new System.Drawing.Size(360, 540);
             this.panelDatosPelicula.TabIndex = 1;
             // 
             // panelBotonesPelicula
             // 
-            this.panelBotonesPelicula.Controls.Add(this.buttonCrearPersonaje);
+            this.panelBotonesPelicula.Controls.Add(this.buttonEliminarPelicula);
             this.panelBotonesPelicula.Controls.Add(this.buttonActualizarPelicula);
             this.panelBotonesPelicula.Controls.Add(this.buttonBuscarPelicula);
             this.panelBotonesPelicula.Controls.Add(this.buttonCrearPelicula);
             this.panelBotonesPelicula.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelBotonesPelicula.Location = new System.Drawing.Point(10, 416);
+            this.panelBotonesPelicula.Location = new System.Drawing.Point(10, 549);
             this.panelBotonesPelicula.Name = "panelBotonesPelicula";
-            this.panelBotonesPelicula.Size = new System.Drawing.Size(250, 136);
+            this.panelBotonesPelicula.Size = new System.Drawing.Size(324, 136);
             this.panelBotonesPelicula.TabIndex = 6;
             // 
-            // buttonCrearPersonaje
+            // buttonEliminarPelicula
             // 
-            this.buttonCrearPersonaje.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.buttonCrearPersonaje.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonCrearPersonaje.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonShadow;
-            this.buttonCrearPersonaje.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCrearPersonaje.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonCrearPersonaje.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            this.buttonCrearPersonaje.Location = new System.Drawing.Point(0, 102);
-            this.buttonCrearPersonaje.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.buttonCrearPersonaje.Name = "buttonCrearPersonaje";
-            this.buttonCrearPersonaje.Size = new System.Drawing.Size(250, 34);
-            this.buttonCrearPersonaje.TabIndex = 4;
-            this.buttonCrearPersonaje.Text = "Eliminar Película";
-            this.buttonCrearPersonaje.UseVisualStyleBackColor = false;
+            this.buttonEliminarPelicula.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.buttonEliminarPelicula.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonEliminarPelicula.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonShadow;
+            this.buttonEliminarPelicula.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEliminarPelicula.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.buttonEliminarPelicula.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.buttonEliminarPelicula.Location = new System.Drawing.Point(0, 102);
+            this.buttonEliminarPelicula.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonEliminarPelicula.Name = "buttonEliminarPelicula";
+            this.buttonEliminarPelicula.Size = new System.Drawing.Size(324, 34);
+            this.buttonEliminarPelicula.TabIndex = 4;
+            this.buttonEliminarPelicula.Text = "Eliminar Película";
+            this.buttonEliminarPelicula.UseVisualStyleBackColor = false;
+            this.buttonEliminarPelicula.Click += new System.EventHandler(this.buttonEliminarPelicula_Click);
             // 
             // buttonActualizarPelicula
             // 
@@ -151,10 +153,11 @@
             this.buttonActualizarPelicula.Location = new System.Drawing.Point(0, 68);
             this.buttonActualizarPelicula.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonActualizarPelicula.Name = "buttonActualizarPelicula";
-            this.buttonActualizarPelicula.Size = new System.Drawing.Size(250, 34);
+            this.buttonActualizarPelicula.Size = new System.Drawing.Size(324, 34);
             this.buttonActualizarPelicula.TabIndex = 3;
             this.buttonActualizarPelicula.Text = "Actualizar Película";
             this.buttonActualizarPelicula.UseVisualStyleBackColor = false;
+            this.buttonActualizarPelicula.Click += new System.EventHandler(this.buttonActualizarPelicula_Click);
             // 
             // buttonBuscarPelicula
             // 
@@ -167,7 +170,7 @@
             this.buttonBuscarPelicula.Location = new System.Drawing.Point(0, 34);
             this.buttonBuscarPelicula.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonBuscarPelicula.Name = "buttonBuscarPelicula";
-            this.buttonBuscarPelicula.Size = new System.Drawing.Size(250, 34);
+            this.buttonBuscarPelicula.Size = new System.Drawing.Size(324, 34);
             this.buttonBuscarPelicula.TabIndex = 2;
             this.buttonBuscarPelicula.Text = "Buscar Película";
             this.buttonBuscarPelicula.UseVisualStyleBackColor = false;
@@ -184,33 +187,33 @@
             this.buttonCrearPelicula.Location = new System.Drawing.Point(0, 0);
             this.buttonCrearPelicula.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonCrearPelicula.Name = "buttonCrearPelicula";
-            this.buttonCrearPelicula.Size = new System.Drawing.Size(250, 34);
+            this.buttonCrearPelicula.Size = new System.Drawing.Size(324, 34);
             this.buttonCrearPelicula.TabIndex = 1;
             this.buttonCrearPelicula.Text = "Crear Película";
             this.buttonCrearPelicula.UseVisualStyleBackColor = false;
+            this.buttonCrearPelicula.Click += new System.EventHandler(this.buttonCrearPelicula_Click);
             // 
             // panelPersonajes
             // 
-            this.panelPersonajes.Controls.Add(this.comboBoxPersonajesPelicula);
+            this.panelPersonajes.Controls.Add(this.checkedListBoxPersonajes);
             this.panelPersonajes.Controls.Add(this.labelPersonajesPelicula);
             this.panelPersonajes.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelPersonajes.Location = new System.Drawing.Point(10, 358);
+            this.panelPersonajes.Location = new System.Drawing.Point(10, 383);
             this.panelPersonajes.Name = "panelPersonajes";
-            this.panelPersonajes.Size = new System.Drawing.Size(250, 58);
+            this.panelPersonajes.Size = new System.Drawing.Size(324, 166);
             this.panelPersonajes.TabIndex = 5;
             // 
-            // comboBoxPersonajesPelicula
+            // checkedListBoxPersonajes
             // 
-            this.comboBoxPersonajesPelicula.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.comboBoxPersonajesPelicula.Dock = System.Windows.Forms.DockStyle.Top;
-            this.comboBoxPersonajesPelicula.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxPersonajesPelicula.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxPersonajesPelicula.FormattingEnabled = true;
-            this.comboBoxPersonajesPelicula.Location = new System.Drawing.Point(0, 25);
-            this.comboBoxPersonajesPelicula.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBoxPersonajesPelicula.Name = "comboBoxPersonajesPelicula";
-            this.comboBoxPersonajesPelicula.Size = new System.Drawing.Size(250, 33);
-            this.comboBoxPersonajesPelicula.TabIndex = 7;
+            this.checkedListBoxPersonajes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.checkedListBoxPersonajes.Dock = System.Windows.Forms.DockStyle.Top;
+            this.checkedListBoxPersonajes.ForeColor = System.Drawing.Color.White;
+            this.checkedListBoxPersonajes.FormattingEnabled = true;
+            this.checkedListBoxPersonajes.Location = new System.Drawing.Point(0, 25);
+            this.checkedListBoxPersonajes.Name = "checkedListBoxPersonajes";
+            this.checkedListBoxPersonajes.Size = new System.Drawing.Size(324, 144);
+            this.checkedListBoxPersonajes.TabIndex = 7;
+            this.checkedListBoxPersonajes.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBoxPersonajes_ItemCheck);
             // 
             // labelPersonajesPelicula
             // 
@@ -220,32 +223,34 @@
             this.labelPersonajesPelicula.ForeColor = System.Drawing.Color.White;
             this.labelPersonajesPelicula.Location = new System.Drawing.Point(0, 0);
             this.labelPersonajesPelicula.Name = "labelPersonajesPelicula";
-            this.labelPersonajesPelicula.Size = new System.Drawing.Size(231, 25);
+            this.labelPersonajesPelicula.Size = new System.Drawing.Size(319, 25);
             this.labelPersonajesPelicula.TabIndex = 6;
-            this.labelPersonajesPelicula.Text = "Personajes que participan";
+            this.labelPersonajesPelicula.Text = "Personajes que participan (Nombre)";
             // 
             // panelUniversoPelicula
             // 
             this.panelUniversoPelicula.Controls.Add(this.comboBoxUniversoPelicula);
             this.panelUniversoPelicula.Controls.Add(this.labelUniversoPelicula);
             this.panelUniversoPelicula.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelUniversoPelicula.Location = new System.Drawing.Point(10, 300);
+            this.panelUniversoPelicula.Location = new System.Drawing.Point(10, 325);
             this.panelUniversoPelicula.Name = "panelUniversoPelicula";
-            this.panelUniversoPelicula.Size = new System.Drawing.Size(250, 58);
+            this.panelUniversoPelicula.Size = new System.Drawing.Size(324, 58);
             this.panelUniversoPelicula.TabIndex = 4;
             // 
             // comboBoxUniversoPelicula
             // 
-            this.comboBoxUniversoPelicula.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.comboBoxUniversoPelicula.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.comboBoxUniversoPelicula.Dock = System.Windows.Forms.DockStyle.Top;
             this.comboBoxUniversoPelicula.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxUniversoPelicula.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxUniversoPelicula.ForeColor = System.Drawing.Color.White;
             this.comboBoxUniversoPelicula.FormattingEnabled = true;
             this.comboBoxUniversoPelicula.Location = new System.Drawing.Point(0, 25);
             this.comboBoxUniversoPelicula.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxUniversoPelicula.Name = "comboBoxUniversoPelicula";
-            this.comboBoxUniversoPelicula.Size = new System.Drawing.Size(250, 33);
+            this.comboBoxUniversoPelicula.Size = new System.Drawing.Size(324, 33);
             this.comboBoxUniversoPelicula.TabIndex = 6;
+            this.comboBoxUniversoPelicula.SelectedIndexChanged += new System.EventHandler(this.comboBoxUniversoPelicula_SelectedIndexChanged);
             // 
             // labelUniversoPelicula
             // 
@@ -264,9 +269,9 @@
             this.panelMontoRecaudado.Controls.Add(this.numericUpDownMontoRecaudado);
             this.panelMontoRecaudado.Controls.Add(this.labelMontoRecaudado);
             this.panelMontoRecaudado.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelMontoRecaudado.Location = new System.Drawing.Point(10, 244);
+            this.panelMontoRecaudado.Location = new System.Drawing.Point(10, 269);
             this.panelMontoRecaudado.Name = "panelMontoRecaudado";
-            this.panelMontoRecaudado.Size = new System.Drawing.Size(250, 56);
+            this.panelMontoRecaudado.Size = new System.Drawing.Size(324, 56);
             this.panelMontoRecaudado.TabIndex = 3;
             // 
             // numericUpDownMontoRecaudado
@@ -283,7 +288,7 @@
             0,
             0});
             this.numericUpDownMontoRecaudado.Name = "numericUpDownMontoRecaudado";
-            this.numericUpDownMontoRecaudado.Size = new System.Drawing.Size(250, 31);
+            this.numericUpDownMontoRecaudado.Size = new System.Drawing.Size(324, 31);
             this.numericUpDownMontoRecaudado.TabIndex = 5;
             // 
             // labelMontoRecaudado
@@ -306,7 +311,7 @@
             this.panelDirector.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelDirector.Location = new System.Drawing.Point(10, 112);
             this.panelDirector.Name = "panelDirector";
-            this.panelDirector.Size = new System.Drawing.Size(250, 132);
+            this.panelDirector.Size = new System.Drawing.Size(324, 157);
             this.panelDirector.TabIndex = 2;
             // 
             // panelModuloDirector
@@ -316,7 +321,7 @@
             this.panelModuloDirector.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelModuloDirector.Location = new System.Drawing.Point(0, 55);
             this.panelModuloDirector.Name = "panelModuloDirector";
-            this.panelModuloDirector.Size = new System.Drawing.Size(250, 77);
+            this.panelModuloDirector.Size = new System.Drawing.Size(324, 102);
             this.panelModuloDirector.TabIndex = 6;
             // 
             // buttonAnnadirDirector
@@ -326,7 +331,7 @@
             this.buttonAnnadirDirector.ForeColor = System.Drawing.Color.White;
             this.buttonAnnadirDirector.Location = new System.Drawing.Point(0, 25);
             this.buttonAnnadirDirector.Name = "buttonAnnadirDirector";
-            this.buttonAnnadirDirector.Size = new System.Drawing.Size(250, 30);
+            this.buttonAnnadirDirector.Size = new System.Drawing.Size(324, 30);
             this.buttonAnnadirDirector.TabIndex = 5;
             this.buttonAnnadirDirector.Text = "Añadir Director";
             this.buttonAnnadirDirector.UseVisualStyleBackColor = true;
@@ -351,7 +356,7 @@
             this.panelAnnoPelicula.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelAnnoPelicula.Location = new System.Drawing.Point(10, 56);
             this.panelAnnoPelicula.Name = "panelAnnoPelicula";
-            this.panelAnnoPelicula.Size = new System.Drawing.Size(250, 56);
+            this.panelAnnoPelicula.Size = new System.Drawing.Size(324, 56);
             this.panelAnnoPelicula.TabIndex = 1;
             // 
             // numericUpDownAnnoPelicula
@@ -367,9 +372,19 @@
             232830,
             0,
             0});
+            this.numericUpDownAnnoPelicula.Minimum = new decimal(new int[] {
+            1800,
+            0,
+            0,
+            0});
             this.numericUpDownAnnoPelicula.Name = "numericUpDownAnnoPelicula";
-            this.numericUpDownAnnoPelicula.Size = new System.Drawing.Size(250, 31);
+            this.numericUpDownAnnoPelicula.Size = new System.Drawing.Size(324, 31);
             this.numericUpDownAnnoPelicula.TabIndex = 3;
+            this.numericUpDownAnnoPelicula.Value = new decimal(new int[] {
+            1800,
+            0,
+            0,
+            0});
             // 
             // labelAnnoPelicula
             // 
@@ -390,7 +405,7 @@
             this.panelNombrePelicula.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelNombrePelicula.Location = new System.Drawing.Point(10, 0);
             this.panelNombrePelicula.Name = "panelNombrePelicula";
-            this.panelNombrePelicula.Size = new System.Drawing.Size(250, 56);
+            this.panelNombrePelicula.Size = new System.Drawing.Size(324, 56);
             this.panelNombrePelicula.TabIndex = 0;
             // 
             // textBoxNombrePelicula
@@ -402,7 +417,7 @@
             this.textBoxNombrePelicula.Location = new System.Drawing.Point(0, 25);
             this.textBoxNombrePelicula.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxNombrePelicula.Name = "textBoxNombrePelicula";
-            this.textBoxNombrePelicula.Size = new System.Drawing.Size(250, 31);
+            this.textBoxNombrePelicula.Size = new System.Drawing.Size(324, 31);
             this.textBoxNombrePelicula.TabIndex = 2;
             // 
             // labelNombrePelicula
@@ -423,10 +438,10 @@
             this.panelImagenPeliucla.Controls.Add(this.pictureBoxImagenPelicula);
             this.panelImagenPeliucla.Controls.Add(this.buttonannadirImagen);
             this.panelImagenPeliucla.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelImagenPeliucla.Location = new System.Drawing.Point(286, 76);
+            this.panelImagenPeliucla.Location = new System.Drawing.Point(360, 76);
             this.panelImagenPeliucla.Name = "panelImagenPeliucla";
             this.panelImagenPeliucla.Padding = new System.Windows.Forms.Padding(80);
-            this.panelImagenPeliucla.Size = new System.Drawing.Size(625, 540);
+            this.panelImagenPeliucla.Size = new System.Drawing.Size(551, 540);
             this.panelImagenPeliucla.TabIndex = 4;
             // 
             // label1
@@ -444,7 +459,7 @@
             this.pictureBoxImagenPelicula.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxImagenPelicula.Location = new System.Drawing.Point(80, 80);
             this.pictureBoxImagenPelicula.Name = "pictureBoxImagenPelicula";
-            this.pictureBoxImagenPelicula.Size = new System.Drawing.Size(465, 346);
+            this.pictureBoxImagenPelicula.Size = new System.Drawing.Size(391, 346);
             this.pictureBoxImagenPelicula.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxImagenPelicula.TabIndex = 2;
             this.pictureBoxImagenPelicula.TabStop = false;
@@ -457,10 +472,11 @@
             this.buttonannadirImagen.ForeColor = System.Drawing.Color.White;
             this.buttonannadirImagen.Location = new System.Drawing.Point(80, 426);
             this.buttonannadirImagen.Name = "buttonannadirImagen";
-            this.buttonannadirImagen.Size = new System.Drawing.Size(465, 34);
+            this.buttonannadirImagen.Size = new System.Drawing.Size(391, 34);
             this.buttonannadirImagen.TabIndex = 1;
             this.buttonannadirImagen.Text = "Añadir Imagen";
             this.buttonannadirImagen.UseVisualStyleBackColor = false;
+            this.buttonannadirImagen.Click += new System.EventHandler(this.buttonannadirImagen_Click);
             // 
             // RegistroPelicula
             // 
@@ -474,6 +490,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "RegistroPelicula";
             this.Text = "RegistroPelicula";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RegistroPelicula_FormClosing);
             this.panelTitulo.ResumeLayout(false);
             this.panelTitulo.PerformLayout();
             this.panelDatosPelicula.ResumeLayout(false);
@@ -518,11 +535,10 @@
         private Label labelMontoRecaudado;
         private Label labelDirector;
         private NumericUpDown numericUpDownAnnoPelicula;
-        private ComboBox comboBoxPersonajesPelicula;
         private Label labelPersonajesPelicula;
         private ComboBox comboBoxUniversoPelicula;
         private Panel panelBotonesPelicula;
-        private Button buttonCrearPersonaje;
+        private Button buttonEliminarPelicula;
         private Button buttonActualizarPelicula;
         private Button buttonBuscarPelicula;
         private Button buttonCrearPelicula;
@@ -532,5 +548,7 @@
         private Label label1;
         private Panel panelModuloDirector;
         private Button buttonAnnadirDirector;
+        private CheckedListBox checkedListBoxPersonajes;
+        private OpenFileDialog openFileDialogImagenPelicula;
     }
 }

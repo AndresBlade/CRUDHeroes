@@ -11,17 +11,15 @@ namespace Heroes
     {
         private string _nombre;
         private int _anno;
-        private string _nombreDirector;
         private int _montoRecaudado;
         private Universo _universo;
         private Image _imagen;
-        private List<Personaje> _personajes;
-        private List<string> _directores;
+        private List<Personaje> _personajes = new List<Personaje>();
+        private List<string> _directores = new List<string>();
 
         public Pelicula()
         {
-            Personajes = new List<Personaje>();
-            Directores = new List<string>();
+            if (Anno == 0) Anno = 1800;
         }
 
 
@@ -38,12 +36,6 @@ namespace Heroes
                 _anno = value;
                 onPropertyChanged("Anno");
             } 
-        }
-        public string NombreDirector { get => _nombreDirector; set
-            {
-                _nombreDirector = string.IsNullOrWhiteSpace(value) ? null : value;
-                onPropertyChanged("NombreDirector");
-            }
         }
 
         public int MontoRecaudado { get => _montoRecaudado; set { 
@@ -69,8 +61,15 @@ namespace Heroes
             }
         }
 
-        internal List<Personaje> Personajes { get => _personajes; set => _personajes = value; }
-        public List<string> Directores { get => _directores; set => _directores = value; }
+        internal List<Personaje> Personajes { get => _personajes; set { 
+                _personajes = value;
+                onPropertyChanged("Personajes");
+            }
+        }
+        public List<string> Directores { get => _directores; set  {
+                _directores = value;
+            }
+        }
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -80,16 +79,15 @@ namespace Heroes
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 
-                //foreach (var propiedad in this.GetType().GetProperties())
+                //if (Nombre == null || Directores.Count == 0 || Personajes.Count == 0 || Imagen == null)
                 //{
-                //    if (propiedad.GetValue(this, null) == null)
-                //    {
-                //        RegistroPersonaje.instance.colocarBotonesDefecto();
-                //        return;
-                //    }
+                //    RegistroPelicula.instance.ColocarBotonesDefecto();
+                //    return;
                 //}
 
-                //RegistroPersonaje.instance.colocarBotonesActivos();
+                //RegistroPelicula.instance.ColocarBotonesActivo();
+
+                RegistroPelicula.instance.chequearCamposVacios();
             }
         }
     }

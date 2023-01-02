@@ -102,5 +102,10 @@ namespace Heroes
         }
 
         #endregion
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (RegistroPelicula.instance != null) RegistroPelicula.instance.guardarPeliculas();
+        }
     }
 }

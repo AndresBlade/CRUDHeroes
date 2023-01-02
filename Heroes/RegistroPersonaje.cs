@@ -81,9 +81,7 @@ namespace Heroes
         //Coloca los controles a sus valores iniciales
         public void colocarControlesDefecto()
         {
-            buttonCrearPersonaje.Enabled = false;
-            buttonEliminarPersonaje.Enabled = false;
-            buttonActualizarPersonaje.Enabled = false;
+            colocarBotonesDefecto();
 
             personaje.Nombre = string.Empty;
             personaje.Actitud = 0;
@@ -101,12 +99,14 @@ namespace Heroes
             {
             //Si busco un personaje y modifico el nombre y luego deshago la modificacion, mantén el botón de crear deshabilitado
 
+                buttonCrearPersonaje.Enabled = false;
                 buttonActualizarPersonaje.Enabled = true;
                 buttonEliminarPersonaje.Enabled = true;
-                buttonCrearPersonaje.Enabled = false;
                 return;
             }
             buttonCrearPersonaje.Enabled = true;
+            buttonActualizarPersonaje.Enabled = false;
+            buttonEliminarPersonaje.Enabled = false;
         }
 
         #region Opciones Combobox
@@ -168,6 +168,8 @@ namespace Heroes
 
         private void buttonBuscarPersonaje_Click(object sender, EventArgs e)
         {
+            //MessageBox.Show($"{personaje.Nombre} {personaje.Edad} {personaje.IdentidadSecreta} {personaje.Universo}");
+
             //Si buscas un nombre vacío
             if (personaje.Nombre == null) {
                 MessageBox.Show("No se puede buscar un nombre vacío", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

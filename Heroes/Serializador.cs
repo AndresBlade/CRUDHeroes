@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
+using System.Text.RegularExpressions;
 
 namespace Heroes
 {
@@ -103,6 +105,121 @@ namespace Heroes
             fileStream.Close();
 
             return personajes;
+        }
+
+        public static string SerializarPelicula(Pelicula pelicula)
+        {
+            string linea = string.Empty;
+
+            linea += pelicula.Nombre + separador;
+            linea += pelicula.Anno.ToString() + separador;
+
+            for (int i = 0; i < pelicula.Directores.Count; i++)
+            {
+
+                string director = pelicula.Directores[i];
+
+                director = Regex.Replace(director, @"\s", "*");
+
+                //if (Regex.IsMatch(director, @"\s"))
+                //{
+                //    MessageBox.Show(director);
+                //}
+                if (i == pelicula.Directores.Count - 1)
+                {
+                    linea += director;
+                    continue;
+                }
+                linea += director + " ";
+            }
+
+
+
+            linea += separador;
+            linea += pelicula.MontoRecaudado + separador;
+            linea += pelicula.Universo + separador;
+
+            for (int i = 0; i < pelicula.Personajes.Count; i++)
+            {
+
+                string personaje = Regex.Replace(pelicula.Personajes[i].Nombre, @"\s", "*");
+                if (i == pelicula.Personajes.Count - 1)
+                {
+                    linea += personaje;
+                    continue;
+                }
+                linea += personaje + " ";
+            }
+            linea += separador;
+
+            return linea;
+        }
+
+        public static string SerializarPeliculas(BindingList<Pelicula> peliculas)
+        {
+            string linea = string.Empty;
+
+            foreach (Pelicula pelicula in peliculas)
+            {
+                linea += SerializarPelicula(pelicula) + "\n";
+            }
+
+            return linea;
+        }
+
+        public static BindingList<Pelicula> DeserializarPeliculas()
+        {
+            BindingList<Pelicula> peliculas = new BindingList<Pelicula>();
+            List<Personaje> personajesGuardados = DeserializarPersonajes();
+
+            string directorio = Application.StartupPath;
+
+            string linea = string.Empty;
+
+            FileStream fileStream = new FileStream(@$"{directorio}/listaPeliculas.txt", FileMode.OpenOrCreate, FileAccess.Read);
+            StreamReader streamReader = new StreamReader(fileStream);
+
+            linea = streamReader.ReadLine();
+
+            while (linea != null)
+            {
+                if (string.IsNullOrWhiteSpace(linea))
+                {
+                    linea = streamReader.ReadLine();
+                    continue;
+                }
+
+                string[] propiedadesPelicula = linea.Split(separador);
+                Pelicula pelicula = new Pelicula();
+                pelicula.Nombre = propiedadesPelicula[0];
+                pelicula.Anno = int.Parse(propiedadesPelicula[1]);
+                string[] directores = propiedadesPelicula[2].Split(" ");
+
+                foreach(string director in directores)
+                {
+                    
+                    pelicula.Directores.Add(Regex.Replace(director, @"\*", " "));
+                }
+                pelicula.MontoRecaudado = int.Parse(propiedadesPelicula[3]);
+                pelicula.Universo = (Universo)Enum.Parse(typeof(Universo), propiedadesPelicula[4]);
+                string[] nombrePersonajes = propiedadesPelicula[5].Split(" ");
+
+                foreach (string nombrePersonaje in nombrePersonajes)
+                {
+
+                    string nombrePersonajeFiltrada = Regex.Replace(nombrePersonaje, @"\*", " ");
+                    Personaje personaje = personajesGuardados.Find(personajeBuscado => personajeBuscado.Nombre == nombrePersonajeFiltrada);
+                    pelicula.Personajes.Add(personaje);
+                }
+
+                peliculas.Add(pelicula);
+                linea = streamReader.ReadLine();
+
+            }
+
+            streamReader.Close();
+            fileStream.Close();
+            return peliculas;
         }
     }
 }

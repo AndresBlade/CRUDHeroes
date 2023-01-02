@@ -247,9 +247,19 @@
             232830,
             0,
             0});
+            this.numericUpDownEdadPersonaje.Minimum = new decimal(new int[] {
+            12,
+            0,
+            0,
+            0});
             this.numericUpDownEdadPersonaje.Name = "numericUpDownEdadPersonaje";
             this.numericUpDownEdadPersonaje.Size = new System.Drawing.Size(276, 31);
             this.numericUpDownEdadPersonaje.TabIndex = 1;
+            this.numericUpDownEdadPersonaje.Value = new decimal(new int[] {
+            12,
+            0,
+            0,
+            0});
             // 
             // labelEdadPersonaje
             // 
