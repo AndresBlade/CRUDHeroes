@@ -93,7 +93,7 @@ namespace Heroes
                     }
                 }
 
-                RegistroPersonaje.instance.colocarBotonesActivos();
+                 if (RegistroPersonaje.instance != null) RegistroPersonaje.instance.colocarBotonesActivos();
             }
         }
     }

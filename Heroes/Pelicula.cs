@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Heroes
 {
-    internal class Pelicula : INotifyPropertyChanged
+    public class Pelicula : INotifyPropertyChanged
     {
         private string _nombre;
         private int _anno;
