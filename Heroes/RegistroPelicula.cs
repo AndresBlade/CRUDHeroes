@@ -21,7 +21,7 @@ namespace Heroes
 		//Para poder manejar la instancia del formulario desde fuera
 		public static RegistroPelicula instance;
 
-		private BindingList<Pelicula> peliculas;
+		public BindingList<Pelicula> peliculas;
 		//Función y datos para agregar placeholder a los textbox
 		private const int EM_SETCUEBANNER = 0x1501;
 
@@ -370,7 +370,7 @@ namespace Heroes
 
 		private void RegistroPelicula_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			GuardarPeliculas();
+			Respaldo.GuardarPeliculas(peliculas);
 		}
 
 		//public void guardarPeliculas()
@@ -386,21 +386,21 @@ namespace Heroes
 		//	fileStream.Close();
 		//}
 
-        public void GuardarPeliculas(BindingList<Pelicula> peliculasAGuardar = null)
-        {
-            if (peliculasAGuardar == null) peliculasAGuardar = peliculas;
-			if (peliculasAGuardar == null) return;
-            string directorio = Application.StartupPath;
-            FileStream fileStream = new FileStream(@$"{directorio}/listaPeliculas.txt", FileMode.Create, FileAccess.Write);
-            StreamWriter streamWriter = new StreamWriter(fileStream);
+		//public void GuardarPeliculas(BindingList<Pelicula> peliculasAGuardar = null)
+		//{
+		//	if (peliculasAGuardar == null) peliculasAGuardar = peliculas;
+		//	if (peliculasAGuardar == null) return;
+		//	string directorio = Application.StartupPath;
+		//	FileStream fileStream = new FileStream(@$"{directorio}/listaPeliculas.txt", FileMode.Create, FileAccess.Write);
+		//	StreamWriter streamWriter = new StreamWriter(fileStream);
 
-            streamWriter.WriteLine(Serializador.SerializarPeliculas(peliculasAGuardar));
+		//	streamWriter.WriteLine(Serializador.SerializarPeliculas(peliculasAGuardar));
 
-            streamWriter.Close();
-            fileStream.Close();
-        }
+		//	streamWriter.Close();
+		//	fileStream.Close();
+		//}
 
-        private void buttonEliminarPelicula_Click(object sender, EventArgs e)
+		private void buttonEliminarPelicula_Click(object sender, EventArgs e)
 		{
 			IReadOnlyList<Pelicula> peliculasAEliminar = peliculas.Where(peliculaABuscar => peliculaABuscar.Nombre == pelicula.Nombre).ToList();
 
@@ -422,7 +422,7 @@ namespace Heroes
 
             File.Delete(@$"{Application.StartupPath}\imgPeliculas\{nombrePelicula}.jpg");
 
-			GuardarPeliculas();
+			Respaldo.GuardarPeliculas(peliculas);
 
 			nombreBuscado = string.Empty;
         }
@@ -455,7 +455,7 @@ namespace Heroes
 			guardarImagenPelicula(nuevaPelicula.Nombre);
 			MessageBox.Show("Película creada exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-			GuardarPeliculas(); //Cambio de ultimo momento
+			Respaldo.GuardarPeliculas(peliculas); //Cambio de ultimo momento
 			ColocarControlesDefecto();
 
 		}
@@ -499,7 +499,7 @@ namespace Heroes
 
 			ColocarControlesDefecto();
 
-			GuardarPeliculas();
+			Respaldo.GuardarPeliculas(peliculas);
 
         }
 

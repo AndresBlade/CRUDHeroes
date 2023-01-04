@@ -256,7 +256,6 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Asociación de Superhéroes";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.panelSideMenu.ResumeLayout(false);
             this.panelPeliculasSubmenu.ResumeLayout(false);
             this.panelPersonajesSubmenu.ResumeLayout(false);

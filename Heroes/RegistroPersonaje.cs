@@ -28,10 +28,8 @@ namespace Heroes
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         private static extern Int32 SendMessage(IntPtr hWnd, int msg, int wParam, [MarshalAs(UnmanagedType.LPWStr)] string lParam);
 
-
-
         private Personaje personaje = new Personaje();
-        private BindingList<Personaje> personajes;
+        public BindingList<Personaje> personajes;
         //public bool PersonajeFueBuscado { get; set; }
         private string nombreBuscado = string.Empty;
 
@@ -64,6 +62,7 @@ namespace Heroes
             numericUpDownEdadPersonaje.DataBindings.Add("Value", personaje, "Edad", true, DataSourceUpdateMode.OnPropertyChanged);
             checkBoxActivoPersonaje.DataBindings.Add("Checked", personaje, "Activo", false, DataSourceUpdateMode.OnPropertyChanged);
             pictureBoxImagenPersonaje.DataBindings.Add("Image", personaje, "Imagen", true, DataSourceUpdateMode.OnPropertyChanged);
+            personaje.Edad = 12;
 
             #endregion
 
@@ -188,7 +187,7 @@ namespace Heroes
             guardarImagenPersonaje(nuevoPersonaje.Nombre);
             MessageBox.Show("Película creada exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            guardarPersonajes(); //Cambio de ultimo momento
+            Respaldo.GuardarPersonajes(personajes); //Cambio de ultimo momento
             colocarControlesDefecto();
         }
 
@@ -276,6 +275,11 @@ namespace Heroes
 
             IReadOnlyList<Personaje> personajesAEliminar = personajes.Where(personajeABuscar => personajeABuscar.Nombre == personaje.Nombre).ToList();
 
+            DialogResult dialogResult= MessageBox.Show("Esta acción eliminará al personaje del sistema y de las películas en las que aparece. Si este es el único personaje de alguna película, la mismas será eliminada. ¿Estás seguro de querer eliminarlo?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            Pelicula peliculaAEliminar = null;
+
+            if (dialogResult == DialogResult.No) return;
+
             foreach(Personaje personajeAEliminar in personajesAEliminar)
             {
                 personajes.Remove(personajeAEliminar);
@@ -289,16 +293,23 @@ namespace Heroes
                 foreach (Personaje personajeAEliminar in personajesAEliminar)
                 {
                     int indiceAEliminar = pelicula.Personajes.FindIndex(personajePelicula => personajePelicula.Nombre == personaje.Nombre);
-                    if (indiceAEliminar >= 0) {
-                        pelicula.Personajes.RemoveAt(indiceAEliminar);
-                    };
+                    if (indiceAEliminar < 0) continue;
 
-                    
+                    pelicula.Personajes.RemoveAt(indiceAEliminar);
+
+                    if (pelicula.Personajes.Count == 0)
+                    {
+                        peliculaAEliminar = pelicula;
+                    }
                 }
-                
             }
 
-                MessageBox.Show("Personaje eliminado exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (peliculaAEliminar != null)
+            {
+                peliculas.RemoveAt(peliculas.ToList().FindIndex(pelicula => pelicula.Nombre == peliculaAEliminar.Nombre));
+            }
+
+            MessageBox.Show("Personaje eliminado exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             string nombrePersonaje = personaje.Nombre;
 
             colocarControlesDefecto();
@@ -308,9 +319,10 @@ namespace Heroes
 
             File.Delete(@$"{Application.StartupPath}\img\{nombrePersonaje}.jpg");
 
-            guardarPersonajes();
+            Respaldo.GuardarPersonajes(personajes);
             
-            RegistroPelicula.instance.GuardarPeliculas(peliculas);
+            
+            Respaldo.GuardarPeliculas(peliculas);
 
             nombreBuscado = string.Empty;
         }
@@ -335,21 +347,21 @@ namespace Heroes
 
             colocarControlesDefecto();
 
-            guardarPersonajes();
+            Respaldo.GuardarPersonajes(personajes);
         }
 
-        public void guardarPersonajes()
-        {
-            if (personajes == null) return;
-            string directorio = Application.StartupPath;
-            FileStream fileStream = new FileStream(@$"{directorio}/listaPersonajes.txt", FileMode.Create, FileAccess.Write);
-            StreamWriter streamWriter = new StreamWriter(fileStream);
+        //public void guardarPersonajes()
+        //{
+        //    if (personajes == null) return;
+        //    string directorio = Application.StartupPath;
+        //    FileStream fileStream = new FileStream(@$"{directorio}/listaPersonajes.txt", FileMode.Create, FileAccess.Write);
+        //    StreamWriter streamWriter = new StreamWriter(fileStream);
 
-            streamWriter.WriteLine(Serializador.SerializarPersonajes(personajes));
+        //    streamWriter.WriteLine(Serializador.SerializarPersonajes(personajes));
 
-            streamWriter.Close();
-            fileStream.Close();
-        }
+        //    streamWriter.Close();
+        //    fileStream.Close();
+        //}
 
         private Bitmap GetClone(string imageName)
         {
@@ -369,7 +381,7 @@ namespace Heroes
 
         private void RegistroPersonaje_FormClosing(object sender, FormClosingEventArgs e)
         {
-            guardarPersonajes();
+            Respaldo.GuardarPersonajes(personajes);
         }
 
         void SetPBoxImage(PictureBox pbox, Bitmap bmp)

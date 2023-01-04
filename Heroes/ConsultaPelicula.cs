@@ -64,9 +64,6 @@ namespace Heroes
                     }
 
                     personajesLinea += peliculas[i].Personajes[j].Nombre + ", ";
-
-
-
                 }
                 dataGridViewPeliculas.Rows.Add(peliculas[i].Nombre, directoresLinea, peliculas[i].Anno, peliculas[i].MontoRecaudado, peliculas[i].Universo, personajesLinea, peliculas[i].Imagen);
             }

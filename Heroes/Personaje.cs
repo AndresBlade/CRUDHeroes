@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Heroes
 {
     //INotifyPropertyChanged permite que el enlace de datos sea bidireccional, el objeto destino notifica al objeto origen
-    internal class Personaje : INotifyPropertyChanged
+    public class Personaje : INotifyPropertyChanged
     {
         private string _nombre;
         private Sexo _sexo;
