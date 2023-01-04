@@ -336,10 +336,10 @@ namespace Heroes
 
 		private void comboBoxUniversoPelicula_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (checkedListBoxPersonajes.CheckedItems.Count == 0) {
-				agregarOpcionesListBoxPersonajes((Universo)comboBoxUniversoPelicula.SelectedItem);
-				return;
-			}
+			//if (checkedListBoxPersonajes.CheckedItems.Count == 0) {
+			//	agregarOpcionesListBoxPersonajes((Universo)comboBoxUniversoPelicula.SelectedItem);
+			//	return;
+			//}
 
 			agregarOpcionesListBoxPersonajes((Universo)comboBoxUniversoPelicula.SelectedItem);
 		}
@@ -374,7 +374,6 @@ namespace Heroes
 		{
 			if (peliculas == null) return;
 			string directorio = Application.StartupPath;
-			string directorioImagen = Path.Combine(directorio, "img");
 			FileStream fileStream = new FileStream(@$"{directorio}/listaPeliculas.txt", FileMode.Create, FileAccess.Write);
 			StreamWriter streamWriter = new StreamWriter(fileStream);
 
@@ -405,6 +404,8 @@ namespace Heroes
             System.GC.WaitForPendingFinalizers();
 
             File.Delete(@$"{Application.StartupPath}\imgPeliculas\{nombrePelicula}.jpg");
+
+			guardarPeliculas();
         }
 
 		private void buttonCrearPelicula_Click(object sender, EventArgs e)
@@ -435,7 +436,7 @@ namespace Heroes
 			guardarImagenPelicula(nuevaPelicula.Nombre);
 			MessageBox.Show("Película creada exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-			
+			guardarPeliculas(); //Cambio de ultimo momento
 			ColocarControlesDefecto();
 
 		}
@@ -465,11 +466,16 @@ namespace Heroes
 
 			peliculaAActualizar.Directores = clonDirectores(pelicula.Directores);
 			peliculaAActualizar.Personajes = clonPersonajes(pelicula.Personajes);
+			peliculaAActualizar.Imagen = pelicula.Imagen;
+
 
 			guardarImagenPelicula(pelicula.Nombre);
 
+			MessageBox.Show("Película actualizada exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+			ColocarControlesDefecto();
 
+			guardarPeliculas();
 
         }
 

@@ -38,14 +38,16 @@
             this.buttonRegistroPersonajes = new System.Windows.Forms.Button();
             this.buttonSubmenuPersonajes = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
-            this.panelFooter = new System.Windows.Forms.Panel();
-            this.labelContadorPersonajes = new System.Windows.Forms.Label();
-            this.labelContadorPeliculas = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panelContenedor = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelSideMenu.SuspendLayout();
             this.panelPeliculasSubmenu.SuspendLayout();
             this.panelPersonajesSubmenu.SuspendLayout();
-            this.panelFooter.SuspendLayout();
+            this.panelLogo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panelContenedor.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelSideMenu
@@ -200,50 +202,43 @@
             // 
             // panelLogo
             // 
+            this.panelLogo.Controls.Add(this.pictureBox2);
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
             this.panelLogo.Name = "panelLogo";
             this.panelLogo.Size = new System.Drawing.Size(325, 150);
             this.panelLogo.TabIndex = 0;
             // 
-            // panelFooter
+            // pictureBox2
             // 
-            this.panelFooter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.panelFooter.Controls.Add(this.labelContadorPersonajes);
-            this.panelFooter.Controls.Add(this.labelContadorPeliculas);
-            this.panelFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelFooter.Location = new System.Drawing.Point(325, 672);
-            this.panelFooter.Name = "panelFooter";
-            this.panelFooter.Size = new System.Drawing.Size(933, 40);
-            this.panelFooter.TabIndex = 1;
-            // 
-            // labelContadorPersonajes
-            // 
-            this.labelContadorPersonajes.AutoSize = true;
-            this.labelContadorPersonajes.Dock = System.Windows.Forms.DockStyle.Right;
-            this.labelContadorPersonajes.Location = new System.Drawing.Point(849, 0);
-            this.labelContadorPersonajes.Name = "labelContadorPersonajes";
-            this.labelContadorPersonajes.Size = new System.Drawing.Size(42, 28);
-            this.labelContadorPersonajes.TabIndex = 1;
-            this.labelContadorPersonajes.Text = "asd";
-            // 
-            // labelContadorPeliculas
-            // 
-            this.labelContadorPeliculas.AutoSize = true;
-            this.labelContadorPeliculas.Dock = System.Windows.Forms.DockStyle.Right;
-            this.labelContadorPeliculas.Location = new System.Drawing.Point(891, 0);
-            this.labelContadorPeliculas.Name = "labelContadorPeliculas";
-            this.labelContadorPeliculas.Size = new System.Drawing.Size(42, 28);
-            this.labelContadorPeliculas.TabIndex = 0;
-            this.labelContadorPeliculas.Text = "asd";
+            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox2.Image = global::Heroes.Properties.Resources.dc;
+            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(325, 150);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
             // 
             // panelContenedor
             // 
+            this.panelContenedor.Controls.Add(this.pictureBox1);
             this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContenedor.Location = new System.Drawing.Point(325, 0);
             this.panelContenedor.Name = "panelContenedor";
-            this.panelContenedor.Size = new System.Drawing.Size(933, 672);
+            this.panelContenedor.Size = new System.Drawing.Size(933, 712);
             this.panelContenedor.TabIndex = 2;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = global::Heroes.Properties.Resources.dc;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(933, 712);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 
@@ -253,7 +248,6 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.ClientSize = new System.Drawing.Size(1258, 712);
             this.Controls.Add(this.panelContenedor);
-            this.Controls.Add(this.panelFooter);
             this.Controls.Add(this.panelSideMenu);
             this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.MinimumSize = new System.Drawing.Size(1024, 768);
@@ -264,8 +258,10 @@
             this.panelSideMenu.ResumeLayout(false);
             this.panelPeliculasSubmenu.ResumeLayout(false);
             this.panelPersonajesSubmenu.ResumeLayout(false);
-            this.panelFooter.ResumeLayout(false);
-            this.panelFooter.PerformLayout();
+            this.panelLogo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panelContenedor.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -281,10 +277,9 @@
         private Button buttonConsultaPeliculas;
         private Button buttonRegistroPeliculas;
         private Button buttonSubmenuPeliculas;
-        private Panel panelFooter;
-        private Label labelContadorPersonajes;
-        private Label labelContadorPeliculas;
         private Panel panelContenedor;
         private Panel panelLogo;
+        private PictureBox pictureBox1;
+        private PictureBox pictureBox2;
     }
 }

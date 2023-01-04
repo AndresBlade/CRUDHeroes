@@ -87,7 +87,7 @@ namespace Heroes
 
                 //RegistroPelicula.instance.ColocarBotonesActivo();
 
-                RegistroPelicula.instance.chequearCamposVacios();
+                if (RegistroPelicula.instance != null) RegistroPelicula.instance.chequearCamposVacios();
             }
         }
     }

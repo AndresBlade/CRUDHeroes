@@ -1,15 +1,19 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 
 
@@ -119,7 +123,7 @@ namespace Heroes
 
         private void agregarOpcionesActitudPersonaje()
         {
-            comboBoxActitudPersonaje.Items.AddRange(new object[] { Actitud.Heroe, Actitud.Villano, Actitud.Antivillano });
+            comboBoxActitudPersonaje.Items.AddRange(new object[] { Actitud.Heroe, Actitud.Villano, Actitud.Antiheroe });
             comboBoxActitudPersonaje.SelectedIndex = 0;
         }
 
@@ -221,7 +225,8 @@ namespace Heroes
 
             if (openFileDialogImagenPersonaje.ShowDialog() == DialogResult.OK)
             {
-                personaje.Imagen = Image.FromFile(openFileDialogImagenPersonaje.FileName);
+                personaje.Imagen = GetClone(openFileDialogImagenPersonaje.FileName);
+                
             }
         }
 
@@ -257,14 +262,79 @@ namespace Heroes
             System.GC.WaitForPendingFinalizers();
             //Eliminar imagen
             File.Delete(@$"{Application.StartupPath}\img\{nombrePersonaje}.jpg");
+
             nombreBuscado = string.Empty;
         }
 
         private void buttonActualizarPersonaje_Click(object sender, EventArgs e)
         {
-            //TODO: crear funcionalidad de actualizar personaje
-            //Puedes abstraer parte del código de crear y eliminar personaje para crear nuevas funciones, de forma que no tengas que repetir código
+            List<Personaje> personajes = Serializador.DeserializarPersonajes();
 
+            Personaje personajeAActualizar = personajes.Find(personajeABuscar => personajeABuscar.Nombre == personaje.Nombre);
+            string directorio = Application.StartupPath;
+            string directorioImagen = Path.Combine(directorio, "img");
+
+            personajeAActualizar.Nombre = personaje.Nombre;
+            personajeAActualizar.Edad = personaje.Edad;
+            personajeAActualizar.Activo = personaje.Activo;
+            personajeAActualizar.IdentidadSecreta = personaje.IdentidadSecreta;
+            personajeAActualizar.Universo = personaje.Universo;
+            personajeAActualizar.Sexo = personaje.Sexo;
+
+            FileStream fileStream = new FileStream(@$"{directorio}/listaPersonajes.txt", FileMode.Create, FileAccess.Write);
+            StreamWriter streamWriter = new StreamWriter(fileStream);
+            streamWriter.WriteLine(Serializador.SerializarPersonajes(personajes));
+            streamWriter.Dispose();
+            fileStream.Dispose();
+
+
+            //using (Bitmap bmp = (Bitmap)personaje.Imagen.Clone())
+            //{
+            //    bmp.Save(@$"{directorioImagen}\{personajeAActualizar.Nombre}.jpg", bmp.RawFormat);
+            //}
+            Bitmap auxiliar = new Bitmap(personaje.Imagen);
+
+            personaje.Imagen.Dispose();
+            colocarControlesDefecto();
+            personajeAActualizar.Imagen.Dispose();
+
+            Thread.Sleep(2000);
+
+            MessageBox.Show("Personaje Actualizado Exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(@$"{directorioImagen}\{personajeAActualizar.Nombre}.jpg");
+            File.Delete(@$"{directorioImagen}\{personajeAActualizar.Nombre}.jpg");
+            
+            auxiliar.Save(@$"{directorioImagen}\{personajeAActualizar.Nombre}.jpg", ImageFormat.Jpeg);
+
+            auxiliar.Dispose();
         }
+
+        private Bitmap GetClone(string imageName)
+        {
+            if (!File.Exists(imageName)) return null;
+            Bitmap bmp2 = null;
+            using (Bitmap bmp = (Bitmap)Bitmap.FromFile(imageName))
+            {
+                bmp2 = new Bitmap(bmp.Width, bmp.Height, bmp.PixelFormat);
+                bmp2.SetResolution(bmp.HorizontalResolution, bmp.VerticalResolution);
+                using (Graphics g = Graphics.FromImage(bmp2))
+                {
+                    g.DrawImage(bmp, 0, 0);
+                }
+            }
+            return bmp2;
+        }
+
+        //private void guardarImagenPersonaje(string nombre)
+        //{
+        //    string directorio = Application.StartupPath;
+
+
+        //    //Creamos auxiliar para evitar lock por parte de windows
+
+        //     //Si utilizamos close() o le asignamos null, todavía mantiene el lock
+
+
+        //}
     }
 }

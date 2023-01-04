@@ -54,6 +54,7 @@ namespace Heroes
         private void buttonConsultaPersonajes_Click(object sender, EventArgs e)
         {
             esconderSubmenu();
+            abrirFormHijo(new ConsultaPersonaje());
         }
 
         #endregion
@@ -74,6 +75,7 @@ namespace Heroes
         private void buttonConsultaPeliculas_Click(object sender, EventArgs e)
         {
             esconderSubmenu();
+            abrirFormHijo(new ConsultaPelicula());
         }
 
         private Form? formActivo = null;

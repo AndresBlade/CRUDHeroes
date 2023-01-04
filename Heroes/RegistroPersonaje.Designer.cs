@@ -89,7 +89,9 @@
             // 
             // labelTitulo
             // 
-            this.labelTitulo.AutoSize = true;
+            this.labelTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelTitulo.Font = new System.Drawing.Font("Stencil", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelTitulo.ForeColor = System.Drawing.Color.White;
             this.labelTitulo.Location = new System.Drawing.Point(28, 0);
@@ -97,6 +99,7 @@
             this.labelTitulo.Size = new System.Drawing.Size(844, 76);
             this.labelTitulo.TabIndex = 0;
             this.labelTitulo.Text = "Registro de Personajes\r\n";
+            this.labelTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panelDatosPersonaje
             // 
@@ -512,7 +515,6 @@
             this.Name = "RegistroPersonaje";
             this.Text = "RegistroPersonaje";
             this.panelTitulo.ResumeLayout(false);
-            this.panelTitulo.PerformLayout();
             this.panelDatosPersonaje.ResumeLayout(false);
             this.panelBotonesPersonaje.ResumeLayout(false);
             this.panelActivoPersonaje.ResumeLayout(false);

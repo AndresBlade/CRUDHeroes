@@ -9,7 +9,7 @@ public enum Actitud
 {
     Heroe,
     Villano,
-    Antivillano
+    Antiheroe
 }
 
 public enum Universo

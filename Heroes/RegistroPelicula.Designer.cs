@@ -87,7 +87,9 @@
             // 
             // labelTitulo
             // 
-            this.labelTitulo.AutoSize = true;
+            this.labelTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelTitulo.Font = new System.Drawing.Font("Stencil", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelTitulo.ForeColor = System.Drawing.Color.White;
             this.labelTitulo.Location = new System.Drawing.Point(65, 0);
@@ -95,6 +97,7 @@
             this.labelTitulo.Size = new System.Drawing.Size(780, 76);
             this.labelTitulo.TabIndex = 1;
             this.labelTitulo.Text = "Registro de Películas";
+            this.labelTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panelDatosPelicula
             // 
@@ -492,7 +495,6 @@
             this.Text = "RegistroPelicula";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RegistroPelicula_FormClosing);
             this.panelTitulo.ResumeLayout(false);
-            this.panelTitulo.PerformLayout();
             this.panelDatosPelicula.ResumeLayout(false);
             this.panelBotonesPelicula.ResumeLayout(false);
             this.panelPersonajes.ResumeLayout(false);
