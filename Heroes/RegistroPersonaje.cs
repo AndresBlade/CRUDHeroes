@@ -298,8 +298,6 @@ namespace Heroes
             colocarControlesDefecto();
             personajeAActualizar.Imagen.Dispose();
 
-            Thread.Sleep(2000);
-
             MessageBox.Show("Personaje Actualizado Exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             MessageBox.Show(@$"{directorioImagen}\{personajeAActualizar.Nombre}.jpg");
             File.Delete(@$"{directorioImagen}\{personajeAActualizar.Nombre}.jpg");
