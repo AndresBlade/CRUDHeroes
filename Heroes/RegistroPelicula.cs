@@ -163,7 +163,7 @@ namespace Heroes
 		{
 			checkedListBoxPersonajes.Items.Clear();
 			pelicula.Personajes.Clear();
-			List<Personaje> personajes = Serializador.DeserializarPersonajes().FindAll(personaje => personaje.Universo == universo);
+			List<Personaje> personajes = Serializador.DeserializarPersonajes().ToList().FindAll(personaje => personaje.Universo == universo);
 
 		   
 			foreach (Personaje personaje in personajes)
@@ -301,7 +301,10 @@ namespace Heroes
             eliminarDirector.Dock = System.Windows.Forms.DockStyle.Right;
             eliminarDirector.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             eliminarDirector.UseVisualStyleBackColor = true;
-            eliminarDirector.Image = Image.FromFile(@$"{Application.StartupPath}botonEliminar.png");
+            string RunningPath = AppDomain.CurrentDomain.BaseDirectory;
+            string FileName = string.Format("{0}Resources\\botonEliminar.png", Path.GetFullPath(Path.Combine(RunningPath, @"..\..\..\")));
+            //eliminarDirector.Image = Image.FromFile(@$"{Application.StartupPath}botonEliminar.png");
+            eliminarDirector.Image = Image.FromFile(FileName);
             eliminarDirector.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             eliminarDirector.Size = new Size(25, 25);
             eliminarDirector.Click += new EventHandler(buttonEliminarDirector_Click);
@@ -406,6 +409,8 @@ namespace Heroes
             File.Delete(@$"{Application.StartupPath}\imgPeliculas\{nombrePelicula}.jpg");
 
 			guardarPeliculas();
+
+			nombreBuscado = string.Empty;
         }
 
 		private void buttonCrearPelicula_Click(object sender, EventArgs e)
@@ -450,8 +455,13 @@ namespace Heroes
 			Image auxiliarDeMemoria = new Bitmap(pelicula.Imagen);
 			Directory.CreateDirectory(directorioImagen);
 			pelicula.Imagen.Dispose(); //Si utilizamos close() o le asignamos null, todavía mantiene el lock
+			pelicula.Imagen = null;
 
-			auxiliarDeMemoria.Save($@"{directorioImagen}\{nombre}.jpg", ImageFormat.Jpeg);
+            System.GC.Collect();
+            System.GC.WaitForPendingFinalizers();
+
+			File.Delete($@"{directorioImagen}\{nombre}.jpg");
+            auxiliarDeMemoria.Save($@"{directorioImagen}\{nombre}.jpg", ImageFormat.Jpeg);
 			pelicula.Imagen = auxiliarDeMemoria;
 		}
 

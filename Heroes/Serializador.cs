@@ -53,7 +53,7 @@ namespace Heroes
 
         //}
 
-        public static string SerializarPersonajes(List<Personaje> personajes)
+        public static string SerializarPersonajes(BindingList<Personaje> personajes)
         {
             //Devuelve un string de un conjunto de lineas, cada linea es un personaje serializado
             string linea = string.Empty;
@@ -66,10 +66,10 @@ namespace Heroes
             return linea;
         }
 
-        public static List<Personaje> DeserializarPersonajes()
+        public static BindingList<Personaje> DeserializarPersonajes()
         {
             //Devuelve la lista de personajes que se encuentra en listaPersonajes.txt
-            List<Personaje> personajes = new List<Personaje>();
+            BindingList<Personaje> personajes = new BindingList<Personaje>();
             string directorio = Application.StartupPath;
             string linea;
 
@@ -96,9 +96,6 @@ namespace Heroes
                 personaje.Universo = (Universo)Enum.Parse(typeof(Universo), propiedadesPersonaje[4]);
                 personaje.Edad = int.Parse(propiedadesPersonaje[5]);
                 personaje.Activo = bool.Parse(propiedadesPersonaje[6]);
-
-
-                personaje.Imagen = GetClone($@"{Application.StartupPath}/img/{personaje.Nombre}.jpg");
                 personajes.Add(personaje);
 
                 linea = streamReader.ReadLine();
@@ -172,7 +169,7 @@ namespace Heroes
         public static BindingList<Pelicula> DeserializarPeliculas()
         {
             BindingList<Pelicula> peliculas = new BindingList<Pelicula>();
-            List<Personaje> personajesGuardados = DeserializarPersonajes();
+            BindingList<Personaje> personajesGuardados = DeserializarPersonajes();
 
             string directorio = Application.StartupPath;
 
@@ -210,7 +207,7 @@ namespace Heroes
                 {
 
                     string nombrePersonajeFiltrada = Regex.Replace(nombrePersonaje, @"\*", " ");
-                    Personaje personaje = personajesGuardados.Find(personajeBuscado => personajeBuscado.Nombre == nombrePersonajeFiltrada);
+                    Personaje personaje = personajesGuardados.ToList().Find(personajeBuscado => personajeBuscado.Nombre == nombrePersonajeFiltrada);
                     pelicula.Personajes.Add(personaje);
                 }
 
@@ -222,22 +219,6 @@ namespace Heroes
             streamReader.Close();
             fileStream.Close();
             return peliculas;
-        }
-
-        private static Bitmap GetClone(string imageName)
-        {
-            if (!File.Exists(imageName)) return null;
-            Bitmap bmp2 = null;
-            using (Bitmap bmp = (Bitmap)Bitmap.FromFile(imageName))
-            {
-                bmp2 = new Bitmap(bmp.Width, bmp.Height, bmp.PixelFormat);
-                bmp2.SetResolution(bmp.HorizontalResolution, bmp.VerticalResolution);
-                using (Graphics g = Graphics.FromImage(bmp2))
-                {
-                    g.DrawImage(bmp, 0, 0);
-                }
-            }
-            return bmp2;
         }
     }
 }

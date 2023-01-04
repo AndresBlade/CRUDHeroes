@@ -16,7 +16,7 @@ namespace Heroes
         public ConsultaPersonaje()
         {
             InitializeComponent();
-            personajes = Serializador.DeserializarPersonajes();
+            personajes = Serializador.DeserializarPersonajes().ToList();
 
             inicializarGridPersonajes(personajes);
             configurarFiltros();

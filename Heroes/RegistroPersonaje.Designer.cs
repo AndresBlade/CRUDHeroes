@@ -514,6 +514,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "RegistroPersonaje";
             this.Text = "RegistroPersonaje";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RegistroPersonaje_FormClosing);
             this.panelTitulo.ResumeLayout(false);
             this.panelDatosPersonaje.ResumeLayout(false);
             this.panelBotonesPersonaje.ResumeLayout(false);

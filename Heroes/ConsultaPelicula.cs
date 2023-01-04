@@ -23,7 +23,7 @@ namespace Heroes
             instance = this;
             InitializeComponent();
             peliculas = Serializador.DeserializarPeliculas().ToList();
-            personajes = Serializador.DeserializarPersonajes();
+            personajes = Serializador.DeserializarPersonajes().ToList();
 
 
             inicializarGridPeliculas(peliculas);

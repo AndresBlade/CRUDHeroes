@@ -31,6 +31,7 @@ namespace Heroes
 
 
         private Personaje personaje = new Personaje();
+        private BindingList<Personaje> personajes;
         //public bool PersonajeFueBuscado { get; set; }
         private string nombreBuscado = string.Empty;
 
@@ -69,6 +70,33 @@ namespace Heroes
             //Crear placeholder para los textbox
             SendMessage(textBoxNombrePersonaje.Handle, EM_SETCUEBANNER, 0, "Ingrese un nombre");
             SendMessage(textBoxIdentidadSecretaPersonaje.Handle, EM_SETCUEBANNER, 0, "Ingrese un nombre secreto");
+
+            inicializarListaPersonajes();
+        }
+
+        private void inicializarListaPersonajes()
+        {
+            personajes = Serializador.DeserializarPersonajes();
+            personajes.AllowEdit = true;
+            personajes.AllowNew = true;
+            personajes.AllowRemove = true;
+
+            personajes.AddingNew += personajes_AddingNew;
+        }
+
+        private void personajes_AddingNew(object sender, AddingNewEventArgs e)
+        {
+            e.NewObject = new Personaje
+            {
+                Nombre = personaje.Nombre,
+                Actitud = personaje.Actitud,
+                Activo = personaje.Activo,
+                Edad = personaje.Edad,
+                IdentidadSecreta = personaje.IdentidadSecreta,
+                Imagen = personaje.Imagen,
+                Sexo = personaje.Sexo,
+                Universo = personaje.Universo
+            };
         }
 
         
@@ -91,7 +119,7 @@ namespace Heroes
             personaje.Actitud = 0;
             personaje.Sexo = 0;
             personaje.Universo = 0;
-            personaje.Edad = 0;
+            personaje.Edad = 12;
             personaje.IdentidadSecreta = string.Empty;
             personaje.Activo = false;
             personaje.Imagen = null;
@@ -136,38 +164,53 @@ namespace Heroes
         #endregion
         private void buttonCrearPersonaje_Click(object sender, EventArgs e)
         {
-            List<Personaje> personajes = Serializador.DeserializarPersonajes();
-            //Busca el personaje que tenga el mismo nombre. Devuelve ese personaje o null si no lo consigue
-            Personaje personajeBuscado = personajes.Find(personajeBuscado => personajeBuscado.Nombre == personaje.Nombre);
+            Personaje nuevoPersonaje = personajes.AddNew();
 
-            //Directorio donde se encuentra el .exe
-            string directorio = Application.StartupPath;
-            //crea un directorio de imagenes donde se encuentra el .exe
-            string directorioImagen = Path.Combine(Application.StartupPath, "img");
-            Directory.CreateDirectory(directorioImagen);
+            int numRepeticiones = 0;
 
-            //Si el personaje ya existe
-            if (personajeBuscado != null)
+            foreach (Personaje personajeColeccion in personajes)
             {
-                MessageBox.Show($"Ya existe un personaje con el nombre \"{personaje.Nombre}\". Si desea actualizar los datos del personaje, pulse \"Actualizar Personaje\". Si desea eliminarlos, pulse \"Eliminar Personaje\"", "No se puede crear Personaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (personajeColeccion.Nombre == nuevoPersonaje.Nombre)
+                {
+                    numRepeticiones++;
+                }
+            }
+
+            if (numRepeticiones > 1)
+            {
+                MessageBox.Show("El nombre de este personaje ya existe. Si desea modificarlo o eliminarlo, Dele al botón de buscar, y luego pulse los respectivos botones", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                personajes.CancelNew(personajes.IndexOf(nuevoPersonaje));
                 return;
             }
 
+            personajes.EndNew(personajes.IndexOf(nuevoPersonaje));
 
-            personajes.Add(personaje);
-            //Guardar Imagen
-            personaje.Imagen.Save(@$"{directorioImagen}/{personaje.Nombre}.jpg", ImageFormat.Jpeg);
+            guardarImagenPersonaje(nuevoPersonaje.Nombre);
+            MessageBox.Show("Película creada exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            //Guardar personajes
-            FileStream fileStream2 = new FileStream(@$"{directorio}/listaPersonajes.txt", FileMode.Create, FileAccess.Write);
-            StreamWriter streamWriter = new StreamWriter(fileStream2);
-            streamWriter.WriteLine(Serializador.SerializarPersonajes(personajes));
-            streamWriter.Close();
-            fileStream2.Close();
-
-            MessageBox.Show("Personaje creado exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+            guardarPersonajes(); //Cambio de ultimo momento
             colocarControlesDefecto();
+        }
+
+        private void guardarImagenPersonaje(string nombre)
+        {
+            string directorio = Application.StartupPath;
+            string directorioImagen = Path.Combine(directorio, "img");
+
+            //Creamos auxiliar para evitar lock por parte de windows
+            Image auxiliarDeMemoria = new Bitmap(personaje.Imagen);
+            Directory.CreateDirectory(directorioImagen);
+            //SetPBoxImage(pictureBoxImagenPersonaje, (Bitmap)personaje.Imagen);
+            personaje.Imagen.Dispose(); //Si utilizamos close() o le asignamos null, todavía mantiene el lock
+            personaje.Imagen = null;
+
+            System.GC.Collect();
+            System.GC.WaitForPendingFinalizers();
+
+            File.Delete($@"{directorioImagen}\{nombre}.jpg");
+            auxiliarDeMemoria.Save($@"{directorioImagen}\{nombre}.jpg", ImageFormat.Jpeg);
+            personaje.Imagen = auxiliarDeMemoria;
+
         }
 
         private void buttonBuscarPersonaje_Click(object sender, EventArgs e)
@@ -180,15 +223,13 @@ namespace Heroes
                 return;
             }
 
-            List<Personaje> personajes = Serializador.DeserializarPersonajes();
-
             //Si buscas un personaje, pero no hay ningún personaje creado
             if (personajes.Count == 0)
             {
                 MessageBox.Show("No hay personajes registrados, por lo que no se podría encontrar alguno", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            Personaje personajeBuscado = personajes.Find(personajeBuscado => personajeBuscado.Nombre == personaje.Nombre);
+            Personaje personajeBuscado = personajes.SingleOrDefault(personajeBuscado => personajeBuscado.Nombre == personaje.Nombre);
 
 
             //Si no consigues al personaje
@@ -233,78 +274,64 @@ namespace Heroes
         private void buttonEliminarPersonaje_Click(object sender, EventArgs e)
         {
 
-            List<Personaje> personajes = Serializador.DeserializarPersonajes();
-            
-            int indicePersonajeAEliminar = personajes.FindIndex(personajeBuscado => personajeBuscado.Nombre == personaje.Nombre);
-            if (indicePersonajeAEliminar < 0)
+            IReadOnlyList<Personaje> personajesAEliminar = personajes.Where(personajeABuscar => personajeABuscar.Nombre == personaje.Nombre).ToList();
+
+            foreach(Personaje personajeAEliminar in personajesAEliminar)
             {
-                MessageBox.Show("No se puede eliminar un personaje que no existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                personajes.Remove(personajeAEliminar);
             }
-            personajes.RemoveAt(indicePersonajeAEliminar);
+
+            personajesAEliminar = null;
 
             MessageBox.Show("Personaje eliminado exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            string directorio = Application.StartupPath;
-
-            //Guardar nueva lista de personajes
-            FileStream fileStream = new FileStream(@$"{directorio}/listaPersonajes.txt", FileMode.Create, FileAccess.Write);
-            StreamWriter streamWriter = new StreamWriter(fileStream);
-            streamWriter.WriteLine(Serializador.SerializarPersonajes(personajes));
-            streamWriter.Close();
-            fileStream.Close();
-
             string nombrePersonaje = personaje.Nombre;
-            //Se elimina la imagen después de quitar la imagen del picture box. De otra forma, da error porque la imagen se está usando
+
             colocarControlesDefecto();
-            //Limpiar recolector de basura, para evitar posibles errores
+
             System.GC.Collect();
             System.GC.WaitForPendingFinalizers();
-            //Eliminar imagen
+
             File.Delete(@$"{Application.StartupPath}\img\{nombrePersonaje}.jpg");
+
+            guardarPersonajes();
 
             nombreBuscado = string.Empty;
         }
 
         private void buttonActualizarPersonaje_Click(object sender, EventArgs e)
         {
-            List<Personaje> personajes = Serializador.DeserializarPersonajes();
-
-            Personaje personajeAActualizar = personajes.Find(personajeABuscar => personajeABuscar.Nombre == personaje.Nombre);
-            string directorio = Application.StartupPath;
-            string directorioImagen = Path.Combine(directorio, "img");
+            Personaje personajeAActualizar = personajes.ToList().Find(personajeABuscar => personajeABuscar.Nombre == personaje.Nombre);
 
             personajeAActualizar.Nombre = personaje.Nombre;
             personajeAActualizar.Edad = personaje.Edad;
-            personajeAActualizar.Activo = personaje.Activo;
-            personajeAActualizar.IdentidadSecreta = personaje.IdentidadSecreta;
-            personajeAActualizar.Universo = personaje.Universo;
             personajeAActualizar.Sexo = personaje.Sexo;
+            personajeAActualizar.Universo = personaje.Universo;
+            personajeAActualizar.Actitud = personaje.Actitud;
 
+            personajeAActualizar.IdentidadSecreta = personaje.IdentidadSecreta;
+            personajeAActualizar.Activo = personaje.Activo;
+
+
+            guardarImagenPersonaje(personaje.Nombre);
+
+            MessageBox.Show("Personaje actualizado exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            colocarControlesDefecto();
+
+            guardarPersonajes();
+        }
+
+        public void guardarPersonajes()
+        {
+            if (personajes == null) return;
+            string directorio = Application.StartupPath;
             FileStream fileStream = new FileStream(@$"{directorio}/listaPersonajes.txt", FileMode.Create, FileAccess.Write);
             StreamWriter streamWriter = new StreamWriter(fileStream);
+
             streamWriter.WriteLine(Serializador.SerializarPersonajes(personajes));
-            streamWriter.Dispose();
-            fileStream.Dispose();
 
-
-            //using (Bitmap bmp = (Bitmap)personaje.Imagen.Clone())
-            //{
-            //    bmp.Save(@$"{directorioImagen}\{personajeAActualizar.Nombre}.jpg", bmp.RawFormat);
-            //}
-            Bitmap auxiliar = new Bitmap(personaje.Imagen);
-
-            personaje.Imagen.Dispose();
-            colocarControlesDefecto();
-            personajeAActualizar.Imagen.Dispose();
-
-            MessageBox.Show("Personaje Actualizado Exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            MessageBox.Show(@$"{directorioImagen}\{personajeAActualizar.Nombre}.jpg");
-            File.Delete(@$"{directorioImagen}\{personajeAActualizar.Nombre}.jpg");
-            
-            auxiliar.Save(@$"{directorioImagen}\{personajeAActualizar.Nombre}.jpg", ImageFormat.Jpeg);
-
-            auxiliar.Dispose();
+            streamWriter.Close();
+            fileStream.Close();
         }
 
         private Bitmap GetClone(string imageName)
@@ -323,16 +350,17 @@ namespace Heroes
             return bmp2;
         }
 
-        //private void guardarImagenPersonaje(string nombre)
-        //{
-        //    string directorio = Application.StartupPath;
+        private void RegistroPersonaje_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            guardarPersonajes();
+        }
 
-
-        //    //Creamos auxiliar para evitar lock por parte de windows
-
-        //     //Si utilizamos close() o le asignamos null, todavía mantiene el lock
-
-
-        //}
+        void SetPBoxImage(PictureBox pbox, Bitmap bmp)
+        {
+            Bitmap dummy = (Bitmap)pbox.Image;
+            pbox.Image = null;
+            if (dummy != null) dummy.Dispose();
+            pbox.Image = bmp;
+        }
     }
 }

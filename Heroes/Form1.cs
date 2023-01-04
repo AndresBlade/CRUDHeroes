@@ -108,6 +108,7 @@ namespace Heroes
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (RegistroPelicula.instance != null) RegistroPelicula.instance.guardarPeliculas();
+            if (RegistroPersonaje.instance != null) RegistroPersonaje.instance.guardarPersonajes();
         }
     }
 }
