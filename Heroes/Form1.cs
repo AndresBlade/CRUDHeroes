@@ -9,14 +9,16 @@ namespace Heroes
         {
             InitializeComponent();
             personalizarDisenno();
-            panelesSubmenu.Add(panelPersonajesSubmenu);
-            panelesSubmenu.Add(panelPeliculasSubmenu);
+            panelesSubmenu.Add(panelClientesSubmenu);
+            panelesSubmenu.Add(panelPrestamosSubmenu);
+            panelesSubmenu.Add(panelPagosSubmenu);
         }
 
         private void personalizarDisenno()
         {
-            panelPersonajesSubmenu.Visible= false;
-            panelPeliculasSubmenu.Visible= false;
+            panelClientesSubmenu.Visible = false;
+            panelPrestamosSubmenu.Visible = false;
+            panelPagosSubmenu.Visible = false;
         }
 
         private void esconderSubmenu()
@@ -40,18 +42,18 @@ namespace Heroes
 
         #region submenu de personajes
 
-        private void buttonSubmenuPersonajes_Click(object sender, EventArgs e)
+        private void buttonSubmenuClientes_Click(object sender, EventArgs e)
         {
-            mostrarSubmenu(panelPersonajesSubmenu);
+            mostrarSubmenu(panelClientesSubmenu);
         }
 
-        private void buttonRegistroPersonajes_Click(object sender, EventArgs e)
+        private void buttonRegistroClientes_Click(object sender, EventArgs e)
         {
             esconderSubmenu();
             abrirFormHijo(new RegistroPersonaje());
         }
 
-        private void buttonConsultaPersonajes_Click(object sender, EventArgs e)
+        private void buttonConsultaClientes_Click(object sender, EventArgs e)
         {
             esconderSubmenu();
             abrirFormHijo(new ConsultaPersonaje());
@@ -61,18 +63,35 @@ namespace Heroes
 
         #region submenu de peliculas
 
-        private void buttonSubmenuPeliculas_Click(object sender, EventArgs e)
+        private void buttonSubmenuPrestamos_Click(object sender, EventArgs e)
         {
-            mostrarSubmenu(panelPeliculasSubmenu);
+            mostrarSubmenu(panelPrestamosSubmenu);
         }
 
-        private void buttonRegistroPeliculas_Click(object sender, EventArgs e)
+        private void buttonRegistroPrestamos_Click(object sender, EventArgs e)
         {
             abrirFormHijo(new RegistroPelicula());
             esconderSubmenu();
         }
 
-        private void buttonConsultaPeliculas_Click(object sender, EventArgs e)
+        private void buttonConsultaPrestamos_Click(object sender, EventArgs e)
+        {
+            esconderSubmenu();
+            abrirFormHijo(new ConsultaPelicula());
+        }
+
+        private void buttonSubmenuPagos_Click(object sender, EventArgs e)
+        {
+            mostrarSubmenu(panelPagosSubmenu);
+        }
+
+        private void buttonRegistroPagos_Click(object sender, EventArgs e)
+        {
+            abrirFormHijo(new RegistroPelicula());
+            esconderSubmenu();
+        }
+
+        private void buttonConsultaPagos_Click(object sender, EventArgs e)
         {
             esconderSubmenu();
             abrirFormHijo(new ConsultaPelicula());
@@ -82,21 +101,21 @@ namespace Heroes
 
         private void abrirFormHijo(Form formHijo)
         {
-            
+
             foreach (Form form in Application.OpenForms)
             {
                 //Si el formulario es el mismo, no cerrar el formulario
                 if (form.GetType() == formHijo.GetType()) return;
             }
-            
-            if(formActivo != null)
+
+            if (formActivo != null)
             {
                 formActivo.Close();
             }
             formActivo = formHijo;
             formHijo.TopLevel = false;
             formHijo.FormBorderStyle = FormBorderStyle.None;
-            formHijo.Dock= DockStyle.Fill;
+            formHijo.Dock = DockStyle.Fill;
             panelContenedor.Controls.Add(formHijo);
             panelContenedor.Tag = formHijo;
             formHijo.BringToFront();
@@ -104,5 +123,6 @@ namespace Heroes
         }
 
         #endregion
+
     }
 }

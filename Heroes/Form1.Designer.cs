@@ -29,258 +29,334 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.panelSideMenu = new System.Windows.Forms.Panel();
-            this.panelPeliculasSubmenu = new System.Windows.Forms.Panel();
-            this.buttonConsultaPeliculas = new System.Windows.Forms.Button();
-            this.buttonRegistroPeliculas = new System.Windows.Forms.Button();
-            this.buttonSubmenuPeliculas = new System.Windows.Forms.Button();
-            this.panelPersonajesSubmenu = new System.Windows.Forms.Panel();
-            this.buttonConsultaPersonajes = new System.Windows.Forms.Button();
-            this.buttonRegistroPersonajes = new System.Windows.Forms.Button();
-            this.buttonSubmenuPersonajes = new System.Windows.Forms.Button();
-            this.panelLogo = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.panelContenedor = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panelSideMenu.SuspendLayout();
-            this.panelPeliculasSubmenu.SuspendLayout();
-            this.panelPersonajesSubmenu.SuspendLayout();
-            this.panelLogo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.panelContenedor.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.SuspendLayout();
+            panelSideMenu = new Panel();
+            panelPrestamosSubmenu = new Panel();
+            buttonConsultaPrestamos = new Button();
+            buttonRegistroPrestamos = new Button();
+            buttonSubmenuPrestamos = new Button();
+            panelClientesSubmenu = new Panel();
+            buttonConsultaClientes = new Button();
+            buttonRegistroClientes = new Button();
+            buttonSubmenuClientes = new Button();
+            panelLogo = new Panel();
+            pictureBox2 = new PictureBox();
+            panelContenedor = new Panel();
+            pictureBox1 = new PictureBox();
+            buttonSubmenuPagos = new Button();
+            panelPagosSubmenu = new Panel();
+            buttonConsultaPagos = new Button();
+            buttonRegistroPagos = new Button();
+            panelSideMenu.SuspendLayout();
+            panelPrestamosSubmenu.SuspendLayout();
+            panelClientesSubmenu.SuspendLayout();
+            panelLogo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            panelContenedor.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panelPagosSubmenu.SuspendLayout();
+            SuspendLayout();
             // 
             // panelSideMenu
             // 
-            this.panelSideMenu.AutoScroll = true;
-            this.panelSideMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.panelSideMenu.Controls.Add(this.panelPeliculasSubmenu);
-            this.panelSideMenu.Controls.Add(this.buttonSubmenuPeliculas);
-            this.panelSideMenu.Controls.Add(this.panelPersonajesSubmenu);
-            this.panelSideMenu.Controls.Add(this.buttonSubmenuPersonajes);
-            this.panelSideMenu.Controls.Add(this.panelLogo);
-            this.panelSideMenu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelSideMenu.Location = new System.Drawing.Point(0, 0);
-            this.panelSideMenu.Name = "panelSideMenu";
-            this.panelSideMenu.Size = new System.Drawing.Size(325, 712);
-            this.panelSideMenu.TabIndex = 0;
+            panelSideMenu.AutoScroll = true;
+            panelSideMenu.BackColor = Color.FromArgb(51, 51, 51);
+            panelSideMenu.Controls.Add(panelPagosSubmenu);
+            panelSideMenu.Controls.Add(buttonSubmenuPagos);
+            panelSideMenu.Controls.Add(panelPrestamosSubmenu);
+            panelSideMenu.Controls.Add(buttonSubmenuPrestamos);
+            panelSideMenu.Controls.Add(panelClientesSubmenu);
+            panelSideMenu.Controls.Add(buttonSubmenuClientes);
+            panelSideMenu.Controls.Add(panelLogo);
+            panelSideMenu.Dock = DockStyle.Left;
+            panelSideMenu.Location = new Point(0, 0);
+            panelSideMenu.Name = "panelSideMenu";
+            panelSideMenu.Size = new Size(325, 712);
+            panelSideMenu.TabIndex = 0;
             // 
-            // panelPeliculasSubmenu
+            // panelPrestamosSubmenu
             // 
-            this.panelPeliculasSubmenu.Controls.Add(this.buttonConsultaPeliculas);
-            this.panelPeliculasSubmenu.Controls.Add(this.buttonRegistroPeliculas);
-            this.panelPeliculasSubmenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelPeliculasSubmenu.Location = new System.Drawing.Point(0, 390);
-            this.panelPeliculasSubmenu.Name = "panelPeliculasSubmenu";
-            this.panelPeliculasSubmenu.Size = new System.Drawing.Size(325, 150);
-            this.panelPeliculasSubmenu.TabIndex = 4;
+            panelPrestamosSubmenu.Controls.Add(buttonConsultaPrestamos);
+            panelPrestamosSubmenu.Controls.Add(buttonRegistroPrestamos);
+            panelPrestamosSubmenu.Dock = DockStyle.Top;
+            panelPrestamosSubmenu.Location = new Point(0, 390);
+            panelPrestamosSubmenu.Name = "panelPrestamosSubmenu";
+            panelPrestamosSubmenu.Size = new Size(325, 121);
+            panelPrestamosSubmenu.TabIndex = 4;
             // 
-            // buttonConsultaPeliculas
+            // buttonConsultaPrestamos
             // 
-            this.buttonConsultaPeliculas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.buttonConsultaPeliculas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonConsultaPeliculas.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.buttonConsultaPeliculas.FlatAppearance.BorderSize = 0;
-            this.buttonConsultaPeliculas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonConsultaPeliculas.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonConsultaPeliculas.ForeColor = System.Drawing.Color.White;
-            this.buttonConsultaPeliculas.Location = new System.Drawing.Point(0, 60);
-            this.buttonConsultaPeliculas.Name = "buttonConsultaPeliculas";
-            this.buttonConsultaPeliculas.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.buttonConsultaPeliculas.Size = new System.Drawing.Size(325, 60);
-            this.buttonConsultaPeliculas.TabIndex = 1;
-            this.buttonConsultaPeliculas.Text = "Consulta de Película";
-            this.buttonConsultaPeliculas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonConsultaPeliculas.UseVisualStyleBackColor = false;
-            this.buttonConsultaPeliculas.Click += new System.EventHandler(this.buttonConsultaPeliculas_Click);
+            buttonConsultaPrestamos.BackColor = Color.FromArgb(85, 85, 85);
+            buttonConsultaPrestamos.Dock = DockStyle.Top;
+            buttonConsultaPrestamos.FlatAppearance.BorderColor = Color.FromArgb(85, 85, 85);
+            buttonConsultaPrestamos.FlatAppearance.BorderSize = 0;
+            buttonConsultaPrestamos.FlatStyle = FlatStyle.Flat;
+            buttonConsultaPrestamos.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonConsultaPrestamos.ForeColor = Color.White;
+            buttonConsultaPrestamos.Location = new Point(0, 60);
+            buttonConsultaPrestamos.Name = "buttonConsultaPrestamos";
+            buttonConsultaPrestamos.Padding = new Padding(35, 0, 0, 0);
+            buttonConsultaPrestamos.Size = new Size(325, 60);
+            buttonConsultaPrestamos.TabIndex = 1;
+            buttonConsultaPrestamos.Text = "Consulta de Préstamos";
+            buttonConsultaPrestamos.TextAlign = ContentAlignment.MiddleLeft;
+            buttonConsultaPrestamos.UseVisualStyleBackColor = false;
+            buttonConsultaPrestamos.Click += buttonConsultaPrestamos_Click;
             // 
-            // buttonRegistroPeliculas
+            // buttonRegistroPrestamos
             // 
-            this.buttonRegistroPeliculas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.buttonRegistroPeliculas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonRegistroPeliculas.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.buttonRegistroPeliculas.FlatAppearance.BorderSize = 0;
-            this.buttonRegistroPeliculas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonRegistroPeliculas.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonRegistroPeliculas.ForeColor = System.Drawing.Color.White;
-            this.buttonRegistroPeliculas.Location = new System.Drawing.Point(0, 0);
-            this.buttonRegistroPeliculas.Name = "buttonRegistroPeliculas";
-            this.buttonRegistroPeliculas.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.buttonRegistroPeliculas.Size = new System.Drawing.Size(325, 60);
-            this.buttonRegistroPeliculas.TabIndex = 0;
-            this.buttonRegistroPeliculas.Text = "Registro de Película";
-            this.buttonRegistroPeliculas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonRegistroPeliculas.UseVisualStyleBackColor = false;
-            this.buttonRegistroPeliculas.Click += new System.EventHandler(this.buttonRegistroPeliculas_Click);
+            buttonRegistroPrestamos.BackColor = Color.FromArgb(85, 85, 85);
+            buttonRegistroPrestamos.Dock = DockStyle.Top;
+            buttonRegistroPrestamos.FlatAppearance.BorderColor = Color.FromArgb(85, 85, 85);
+            buttonRegistroPrestamos.FlatAppearance.BorderSize = 0;
+            buttonRegistroPrestamos.FlatStyle = FlatStyle.Flat;
+            buttonRegistroPrestamos.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonRegistroPrestamos.ForeColor = Color.White;
+            buttonRegistroPrestamos.Location = new Point(0, 0);
+            buttonRegistroPrestamos.Name = "buttonRegistroPrestamos";
+            buttonRegistroPrestamos.Padding = new Padding(35, 0, 0, 0);
+            buttonRegistroPrestamos.Size = new Size(325, 60);
+            buttonRegistroPrestamos.TabIndex = 0;
+            buttonRegistroPrestamos.Text = "Registro de Préstamos";
+            buttonRegistroPrestamos.TextAlign = ContentAlignment.MiddleLeft;
+            buttonRegistroPrestamos.UseVisualStyleBackColor = false;
+            buttonRegistroPrestamos.Click += buttonRegistroPrestamos_Click;
             // 
-            // buttonSubmenuPeliculas
+            // buttonSubmenuPrestamos
             // 
-            this.buttonSubmenuPeliculas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.buttonSubmenuPeliculas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonSubmenuPeliculas.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.buttonSubmenuPeliculas.FlatAppearance.BorderSize = 0;
-            this.buttonSubmenuPeliculas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSubmenuPeliculas.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonSubmenuPeliculas.ForeColor = System.Drawing.Color.White;
-            this.buttonSubmenuPeliculas.Location = new System.Drawing.Point(0, 330);
-            this.buttonSubmenuPeliculas.Name = "buttonSubmenuPeliculas";
-            this.buttonSubmenuPeliculas.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.buttonSubmenuPeliculas.Size = new System.Drawing.Size(325, 60);
-            this.buttonSubmenuPeliculas.TabIndex = 3;
-            this.buttonSubmenuPeliculas.Text = "Películas";
-            this.buttonSubmenuPeliculas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonSubmenuPeliculas.UseVisualStyleBackColor = false;
-            this.buttonSubmenuPeliculas.Click += new System.EventHandler(this.buttonSubmenuPeliculas_Click);
+            buttonSubmenuPrestamos.BackColor = Color.FromArgb(51, 51, 51);
+            buttonSubmenuPrestamos.Dock = DockStyle.Top;
+            buttonSubmenuPrestamos.FlatAppearance.BorderColor = Color.FromArgb(68, 68, 68);
+            buttonSubmenuPrestamos.FlatAppearance.BorderSize = 0;
+            buttonSubmenuPrestamos.FlatStyle = FlatStyle.Flat;
+            buttonSubmenuPrestamos.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonSubmenuPrestamos.ForeColor = Color.White;
+            buttonSubmenuPrestamos.Location = new Point(0, 330);
+            buttonSubmenuPrestamos.Name = "buttonSubmenuPrestamos";
+            buttonSubmenuPrestamos.Padding = new Padding(10, 0, 0, 0);
+            buttonSubmenuPrestamos.Size = new Size(325, 60);
+            buttonSubmenuPrestamos.TabIndex = 3;
+            buttonSubmenuPrestamos.Text = "Préstamos";
+            buttonSubmenuPrestamos.TextAlign = ContentAlignment.MiddleLeft;
+            buttonSubmenuPrestamos.UseVisualStyleBackColor = false;
+            buttonSubmenuPrestamos.Click += buttonSubmenuPrestamos_Click;
             // 
-            // panelPersonajesSubmenu
+            // panelClientesSubmenu
             // 
-            this.panelPersonajesSubmenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(29)))));
-            this.panelPersonajesSubmenu.Controls.Add(this.buttonConsultaPersonajes);
-            this.panelPersonajesSubmenu.Controls.Add(this.buttonRegistroPersonajes);
-            this.panelPersonajesSubmenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelPersonajesSubmenu.Location = new System.Drawing.Point(0, 210);
-            this.panelPersonajesSubmenu.Name = "panelPersonajesSubmenu";
-            this.panelPersonajesSubmenu.Size = new System.Drawing.Size(325, 120);
-            this.panelPersonajesSubmenu.TabIndex = 2;
+            panelClientesSubmenu.BackColor = Color.FromArgb(35, 32, 29);
+            panelClientesSubmenu.Controls.Add(buttonConsultaClientes);
+            panelClientesSubmenu.Controls.Add(buttonRegistroClientes);
+            panelClientesSubmenu.Dock = DockStyle.Top;
+            panelClientesSubmenu.Location = new Point(0, 210);
+            panelClientesSubmenu.Name = "panelClientesSubmenu";
+            panelClientesSubmenu.Size = new Size(325, 120);
+            panelClientesSubmenu.TabIndex = 2;
             // 
-            // buttonConsultaPersonajes
+            // buttonConsultaClientes
             // 
-            this.buttonConsultaPersonajes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.buttonConsultaPersonajes.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonConsultaPersonajes.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.buttonConsultaPersonajes.FlatAppearance.BorderSize = 0;
-            this.buttonConsultaPersonajes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonConsultaPersonajes.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonConsultaPersonajes.ForeColor = System.Drawing.Color.White;
-            this.buttonConsultaPersonajes.Location = new System.Drawing.Point(0, 60);
-            this.buttonConsultaPersonajes.Name = "buttonConsultaPersonajes";
-            this.buttonConsultaPersonajes.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.buttonConsultaPersonajes.Size = new System.Drawing.Size(325, 60);
-            this.buttonConsultaPersonajes.TabIndex = 1;
-            this.buttonConsultaPersonajes.Text = "Consulta de Personaje";
-            this.buttonConsultaPersonajes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonConsultaPersonajes.UseVisualStyleBackColor = false;
-            this.buttonConsultaPersonajes.Click += new System.EventHandler(this.buttonConsultaPersonajes_Click);
+            buttonConsultaClientes.BackColor = Color.FromArgb(85, 85, 85);
+            buttonConsultaClientes.Dock = DockStyle.Top;
+            buttonConsultaClientes.FlatAppearance.BorderColor = Color.FromArgb(85, 85, 85);
+            buttonConsultaClientes.FlatAppearance.BorderSize = 0;
+            buttonConsultaClientes.FlatStyle = FlatStyle.Flat;
+            buttonConsultaClientes.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonConsultaClientes.ForeColor = Color.White;
+            buttonConsultaClientes.Location = new Point(0, 60);
+            buttonConsultaClientes.Name = "buttonConsultaClientes";
+            buttonConsultaClientes.Padding = new Padding(35, 0, 0, 0);
+            buttonConsultaClientes.Size = new Size(325, 60);
+            buttonConsultaClientes.TabIndex = 1;
+            buttonConsultaClientes.Text = "Consulta de Cliente";
+            buttonConsultaClientes.TextAlign = ContentAlignment.MiddleLeft;
+            buttonConsultaClientes.UseVisualStyleBackColor = false;
+            buttonConsultaClientes.Click += buttonConsultaClientes_Click;
             // 
-            // buttonRegistroPersonajes
+            // buttonRegistroClientes
             // 
-            this.buttonRegistroPersonajes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.buttonRegistroPersonajes.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonRegistroPersonajes.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(85)))), ((int)(((byte)(85)))));
-            this.buttonRegistroPersonajes.FlatAppearance.BorderSize = 0;
-            this.buttonRegistroPersonajes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonRegistroPersonajes.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonRegistroPersonajes.ForeColor = System.Drawing.Color.White;
-            this.buttonRegistroPersonajes.Location = new System.Drawing.Point(0, 0);
-            this.buttonRegistroPersonajes.Name = "buttonRegistroPersonajes";
-            this.buttonRegistroPersonajes.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.buttonRegistroPersonajes.Size = new System.Drawing.Size(325, 60);
-            this.buttonRegistroPersonajes.TabIndex = 0;
-            this.buttonRegistroPersonajes.Text = "Registro de Personaje";
-            this.buttonRegistroPersonajes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonRegistroPersonajes.UseVisualStyleBackColor = false;
-            this.buttonRegistroPersonajes.Click += new System.EventHandler(this.buttonRegistroPersonajes_Click);
+            buttonRegistroClientes.BackColor = Color.FromArgb(85, 85, 85);
+            buttonRegistroClientes.Dock = DockStyle.Top;
+            buttonRegistroClientes.FlatAppearance.BorderColor = Color.FromArgb(85, 85, 85);
+            buttonRegistroClientes.FlatAppearance.BorderSize = 0;
+            buttonRegistroClientes.FlatStyle = FlatStyle.Flat;
+            buttonRegistroClientes.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonRegistroClientes.ForeColor = Color.White;
+            buttonRegistroClientes.Location = new Point(0, 0);
+            buttonRegistroClientes.Name = "buttonRegistroClientes";
+            buttonRegistroClientes.Padding = new Padding(35, 0, 0, 0);
+            buttonRegistroClientes.Size = new Size(325, 60);
+            buttonRegistroClientes.TabIndex = 0;
+            buttonRegistroClientes.Text = "Registro de Cliente";
+            buttonRegistroClientes.TextAlign = ContentAlignment.MiddleLeft;
+            buttonRegistroClientes.UseVisualStyleBackColor = false;
+            buttonRegistroClientes.Click += buttonRegistroClientes_Click;
             // 
-            // buttonSubmenuPersonajes
+            // buttonSubmenuClientes
             // 
-            this.buttonSubmenuPersonajes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.buttonSubmenuPersonajes.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonSubmenuPersonajes.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.buttonSubmenuPersonajes.FlatAppearance.BorderSize = 0;
-            this.buttonSubmenuPersonajes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSubmenuPersonajes.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonSubmenuPersonajes.ForeColor = System.Drawing.Color.White;
-            this.buttonSubmenuPersonajes.Location = new System.Drawing.Point(0, 150);
-            this.buttonSubmenuPersonajes.Name = "buttonSubmenuPersonajes";
-            this.buttonSubmenuPersonajes.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.buttonSubmenuPersonajes.Size = new System.Drawing.Size(325, 60);
-            this.buttonSubmenuPersonajes.TabIndex = 1;
-            this.buttonSubmenuPersonajes.Text = "Personajes";
-            this.buttonSubmenuPersonajes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonSubmenuPersonajes.UseVisualStyleBackColor = false;
-            this.buttonSubmenuPersonajes.Click += new System.EventHandler(this.buttonSubmenuPersonajes_Click);
+            buttonSubmenuClientes.BackColor = Color.FromArgb(51, 51, 51);
+            buttonSubmenuClientes.Dock = DockStyle.Top;
+            buttonSubmenuClientes.FlatAppearance.BorderColor = Color.FromArgb(68, 68, 68);
+            buttonSubmenuClientes.FlatAppearance.BorderSize = 0;
+            buttonSubmenuClientes.FlatStyle = FlatStyle.Flat;
+            buttonSubmenuClientes.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonSubmenuClientes.ForeColor = Color.White;
+            buttonSubmenuClientes.Location = new Point(0, 150);
+            buttonSubmenuClientes.Name = "buttonSubmenuClientes";
+            buttonSubmenuClientes.Padding = new Padding(10, 0, 0, 0);
+            buttonSubmenuClientes.Size = new Size(325, 60);
+            buttonSubmenuClientes.TabIndex = 1;
+            buttonSubmenuClientes.Text = "Clientes";
+            buttonSubmenuClientes.TextAlign = ContentAlignment.MiddleLeft;
+            buttonSubmenuClientes.UseVisualStyleBackColor = false;
+            buttonSubmenuClientes.Click += buttonSubmenuClientes_Click;
             // 
             // panelLogo
             // 
-            this.panelLogo.Controls.Add(this.pictureBox2);
-            this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelLogo.Location = new System.Drawing.Point(0, 0);
-            this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(325, 150);
-            this.panelLogo.TabIndex = 0;
+            panelLogo.Controls.Add(pictureBox2);
+            panelLogo.Dock = DockStyle.Top;
+            panelLogo.Location = new Point(0, 0);
+            panelLogo.Name = "panelLogo";
+            panelLogo.Size = new Size(325, 150);
+            panelLogo.TabIndex = 0;
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox2.Image = global::Heroes.Properties.Resources.dc;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(325, 150);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
+            pictureBox2.Dock = DockStyle.Fill;
+            pictureBox2.Image = Properties.Resources.enterprise;
+            pictureBox2.Location = new Point(0, 0);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(325, 150);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 1;
+            pictureBox2.TabStop = false;
             // 
             // panelContenedor
             // 
-            this.panelContenedor.Controls.Add(this.pictureBox1);
-            this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContenedor.Location = new System.Drawing.Point(325, 0);
-            this.panelContenedor.Name = "panelContenedor";
-            this.panelContenedor.Size = new System.Drawing.Size(933, 712);
-            this.panelContenedor.TabIndex = 2;
+            panelContenedor.Controls.Add(pictureBox1);
+            panelContenedor.Dock = DockStyle.Fill;
+            panelContenedor.Location = new Point(325, 0);
+            panelContenedor.Name = "panelContenedor";
+            panelContenedor.Size = new Size(933, 712);
+            panelContenedor.TabIndex = 2;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::Heroes.Properties.Resources.dc;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(933, 712);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            pictureBox1.Dock = DockStyle.Fill;
+            pictureBox1.Image = Properties.Resources.enterprise;
+            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(933, 712);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
+            // 
+            // buttonSubmenuPagos
+            // 
+            buttonSubmenuPagos.BackColor = Color.FromArgb(51, 51, 51);
+            buttonSubmenuPagos.Dock = DockStyle.Top;
+            buttonSubmenuPagos.FlatAppearance.BorderColor = Color.FromArgb(68, 68, 68);
+            buttonSubmenuPagos.FlatAppearance.BorderSize = 0;
+            buttonSubmenuPagos.FlatStyle = FlatStyle.Flat;
+            buttonSubmenuPagos.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonSubmenuPagos.ForeColor = Color.White;
+            buttonSubmenuPagos.Location = new Point(0, 511);
+            buttonSubmenuPagos.Name = "buttonSubmenuPagos";
+            buttonSubmenuPagos.Padding = new Padding(10, 0, 0, 0);
+            buttonSubmenuPagos.Size = new Size(325, 60);
+            buttonSubmenuPagos.TabIndex = 5;
+            buttonSubmenuPagos.Text = "Pagos";
+            buttonSubmenuPagos.TextAlign = ContentAlignment.MiddleLeft;
+            buttonSubmenuPagos.UseVisualStyleBackColor = false;
+            buttonSubmenuPagos.Click += buttonSubmenuPagos_Click;
+            // 
+            // panelPagosSubmenu
+            // 
+            panelPagosSubmenu.Controls.Add(buttonConsultaPagos);
+            panelPagosSubmenu.Controls.Add(buttonRegistroPagos);
+            panelPagosSubmenu.Dock = DockStyle.Top;
+            panelPagosSubmenu.Location = new Point(0, 571);
+            panelPagosSubmenu.Name = "panelPagosSubmenu";
+            panelPagosSubmenu.Size = new Size(325, 121);
+            panelPagosSubmenu.TabIndex = 6;
+            // 
+            // buttonConsultaPagos
+            // 
+            buttonConsultaPagos.BackColor = Color.FromArgb(85, 85, 85);
+            buttonConsultaPagos.Dock = DockStyle.Top;
+            buttonConsultaPagos.FlatAppearance.BorderColor = Color.FromArgb(85, 85, 85);
+            buttonConsultaPagos.FlatAppearance.BorderSize = 0;
+            buttonConsultaPagos.FlatStyle = FlatStyle.Flat;
+            buttonConsultaPagos.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonConsultaPagos.ForeColor = Color.White;
+            buttonConsultaPagos.Location = new Point(0, 60);
+            buttonConsultaPagos.Name = "buttonConsultaPagos";
+            buttonConsultaPagos.Padding = new Padding(35, 0, 0, 0);
+            buttonConsultaPagos.Size = new Size(325, 60);
+            buttonConsultaPagos.TabIndex = 1;
+            buttonConsultaPagos.Text = "Consulta de Préstamos";
+            buttonConsultaPagos.TextAlign = ContentAlignment.MiddleLeft;
+            buttonConsultaPagos.UseVisualStyleBackColor = false;
+            // 
+            // buttonRegistroPagos
+            // 
+            buttonRegistroPagos.BackColor = Color.FromArgb(85, 85, 85);
+            buttonRegistroPagos.Dock = DockStyle.Top;
+            buttonRegistroPagos.FlatAppearance.BorderColor = Color.FromArgb(85, 85, 85);
+            buttonRegistroPagos.FlatAppearance.BorderSize = 0;
+            buttonRegistroPagos.FlatStyle = FlatStyle.Flat;
+            buttonRegistroPagos.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonRegistroPagos.ForeColor = Color.White;
+            buttonRegistroPagos.Location = new Point(0, 0);
+            buttonRegistroPagos.Name = "buttonRegistroPagos";
+            buttonRegistroPagos.Padding = new Padding(35, 0, 0, 0);
+            buttonRegistroPagos.Size = new Size(325, 60);
+            buttonRegistroPagos.TabIndex = 0;
+            buttonRegistroPagos.Text = "Registro de Préstamos";
+            buttonRegistroPagos.TextAlign = ContentAlignment.MiddleLeft;
+            buttonRegistroPagos.UseVisualStyleBackColor = false;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.ClientSize = new System.Drawing.Size(1258, 712);
-            this.Controls.Add(this.panelContenedor);
-            this.Controls.Add(this.panelSideMenu);
-            this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1024, 768);
-            this.Name = "Form1";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Asociación de Superhéroes";
-            this.panelSideMenu.ResumeLayout(false);
-            this.panelPeliculasSubmenu.ResumeLayout(false);
-            this.panelPersonajesSubmenu.ResumeLayout(false);
-            this.panelLogo.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.panelContenedor.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleMode = AutoScaleMode.Font;
+            AutoValidate = AutoValidate.EnablePreventFocusChange;
+            BackColor = Color.FromArgb(34, 34, 34);
+            ClientSize = new Size(1258, 712);
+            Controls.Add(panelContenedor);
+            Controls.Add(panelSideMenu);
+            Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            MinimumSize = new Size(1024, 718);
+            Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Sistema de Gestión de Empresa";
+            panelSideMenu.ResumeLayout(false);
+            panelPrestamosSubmenu.ResumeLayout(false);
+            panelClientesSubmenu.ResumeLayout(false);
+            panelLogo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            panelContenedor.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panelPagosSubmenu.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion
 
         private Panel panelSideMenu;
-        private Panel panelPersonajesSubmenu;
-        private Button buttonSubmenuPersonajes;
-        private Button buttonRegistroPersonajes;
-        private Button buttonConsultaPersonajes;
-        private Panel panelPeliculasSubmenu;
-        private Button buttonConsultaPeliculas;
-        private Button buttonRegistroPeliculas;
-        private Button buttonSubmenuPeliculas;
+        private Panel panelClientesSubmenu;
+        private Button buttonSubmenuClientes;
+        private Button buttonRegistroClientes;
+        private Button buttonConsultaClientes;
+        private Panel panelPrestamosSubmenu;
+        private Button buttonConsultaPrestamos;
+        private Button buttonRegistroPrestamos;
+        private Button buttonSubmenuPrestamos;
         private Panel panelContenedor;
         private Panel panelLogo;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
+        private Button buttonSubmenuPagos;
+        private Panel panelPagosSubmenu;
+        private Button buttonConsultaPagos;
+        private Button buttonRegistroPagos;
     }
 }
