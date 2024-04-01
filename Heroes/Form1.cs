@@ -1,4 +1,4 @@
-namespace Heroes
+namespace Empresa
 {
     public partial class Form1 : Form
     {
@@ -40,7 +40,7 @@ namespace Heroes
             submenu.Visible = false;
         }
 
-        #region submenu de personajes
+        #region submenu de clientes
 
         private void buttonSubmenuClientes_Click(object sender, EventArgs e)
         {
@@ -50,13 +50,13 @@ namespace Heroes
         private void buttonRegistroClientes_Click(object sender, EventArgs e)
         {
             esconderSubmenu();
-            abrirFormHijo(new RegistroPersonaje());
+            abrirFormHijo(new RegistroCliente());
         }
 
         private void buttonConsultaClientes_Click(object sender, EventArgs e)
         {
             esconderSubmenu();
-            abrirFormHijo(new ConsultaPersonaje());
+            abrirFormHijo(new ConsultaCliente());
         }
 
         #endregion
@@ -70,14 +70,14 @@ namespace Heroes
 
         private void buttonRegistroPrestamos_Click(object sender, EventArgs e)
         {
-            abrirFormHijo(new RegistroPelicula());
+            //abrirFormHijo(new RegistroPelicula());
             esconderSubmenu();
         }
 
         private void buttonConsultaPrestamos_Click(object sender, EventArgs e)
         {
             esconderSubmenu();
-            abrirFormHijo(new ConsultaPelicula());
+            //abrirFormHijo(new ConsultaPelicula());
         }
 
         private void buttonSubmenuPagos_Click(object sender, EventArgs e)
@@ -87,14 +87,14 @@ namespace Heroes
 
         private void buttonRegistroPagos_Click(object sender, EventArgs e)
         {
-            abrirFormHijo(new RegistroPelicula());
+            //abrirFormHijo(new RegistroPelicula());
             esconderSubmenu();
         }
 
         private void buttonConsultaPagos_Click(object sender, EventArgs e)
         {
             esconderSubmenu();
-            abrirFormHijo(new ConsultaPelicula());
+            //abrirFormHijo(new ConsultaPelicula());
         }
 
         private Form? formActivo = null;

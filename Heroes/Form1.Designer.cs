@@ -1,4 +1,4 @@
-﻿namespace Heroes
+﻿namespace Empresa
 {
     partial class Form1
     {
@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             panelSideMenu = new Panel();
+            panelPagosSubmenu = new Panel();
+            buttonConsultaPagos = new Button();
+            buttonRegistroPagos = new Button();
+            buttonSubmenuPagos = new Button();
             panelPrestamosSubmenu = new Panel();
             buttonConsultaPrestamos = new Button();
             buttonRegistroPrestamos = new Button();
@@ -42,18 +46,14 @@
             pictureBox2 = new PictureBox();
             panelContenedor = new Panel();
             pictureBox1 = new PictureBox();
-            buttonSubmenuPagos = new Button();
-            panelPagosSubmenu = new Panel();
-            buttonConsultaPagos = new Button();
-            buttonRegistroPagos = new Button();
             panelSideMenu.SuspendLayout();
+            panelPagosSubmenu.SuspendLayout();
             panelPrestamosSubmenu.SuspendLayout();
             panelClientesSubmenu.SuspendLayout();
             panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panelContenedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            panelPagosSubmenu.SuspendLayout();
             SuspendLayout();
             // 
             // panelSideMenu
@@ -72,6 +72,71 @@
             panelSideMenu.Name = "panelSideMenu";
             panelSideMenu.Size = new Size(325, 712);
             panelSideMenu.TabIndex = 0;
+            // 
+            // panelPagosSubmenu
+            // 
+            panelPagosSubmenu.Controls.Add(buttonConsultaPagos);
+            panelPagosSubmenu.Controls.Add(buttonRegistroPagos);
+            panelPagosSubmenu.Dock = DockStyle.Top;
+            panelPagosSubmenu.Location = new Point(0, 571);
+            panelPagosSubmenu.Name = "panelPagosSubmenu";
+            panelPagosSubmenu.Size = new Size(325, 121);
+            panelPagosSubmenu.TabIndex = 6;
+            // 
+            // buttonConsultaPagos
+            // 
+            buttonConsultaPagos.BackColor = Color.FromArgb(85, 85, 85);
+            buttonConsultaPagos.Dock = DockStyle.Top;
+            buttonConsultaPagos.FlatAppearance.BorderColor = Color.FromArgb(85, 85, 85);
+            buttonConsultaPagos.FlatAppearance.BorderSize = 0;
+            buttonConsultaPagos.FlatStyle = FlatStyle.Flat;
+            buttonConsultaPagos.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonConsultaPagos.ForeColor = Color.White;
+            buttonConsultaPagos.Location = new Point(0, 60);
+            buttonConsultaPagos.Name = "buttonConsultaPagos";
+            buttonConsultaPagos.Padding = new Padding(35, 0, 0, 0);
+            buttonConsultaPagos.Size = new Size(325, 60);
+            buttonConsultaPagos.TabIndex = 1;
+            buttonConsultaPagos.Text = "Consulta de Préstamos";
+            buttonConsultaPagos.TextAlign = ContentAlignment.MiddleLeft;
+            buttonConsultaPagos.UseVisualStyleBackColor = false;
+            // 
+            // buttonRegistroPagos
+            // 
+            buttonRegistroPagos.BackColor = Color.FromArgb(85, 85, 85);
+            buttonRegistroPagos.Dock = DockStyle.Top;
+            buttonRegistroPagos.FlatAppearance.BorderColor = Color.FromArgb(85, 85, 85);
+            buttonRegistroPagos.FlatAppearance.BorderSize = 0;
+            buttonRegistroPagos.FlatStyle = FlatStyle.Flat;
+            buttonRegistroPagos.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonRegistroPagos.ForeColor = Color.White;
+            buttonRegistroPagos.Location = new Point(0, 0);
+            buttonRegistroPagos.Name = "buttonRegistroPagos";
+            buttonRegistroPagos.Padding = new Padding(35, 0, 0, 0);
+            buttonRegistroPagos.Size = new Size(325, 60);
+            buttonRegistroPagos.TabIndex = 0;
+            buttonRegistroPagos.Text = "Registro de Préstamos";
+            buttonRegistroPagos.TextAlign = ContentAlignment.MiddleLeft;
+            buttonRegistroPagos.UseVisualStyleBackColor = false;
+            // 
+            // buttonSubmenuPagos
+            // 
+            buttonSubmenuPagos.BackColor = Color.FromArgb(51, 51, 51);
+            buttonSubmenuPagos.Dock = DockStyle.Top;
+            buttonSubmenuPagos.FlatAppearance.BorderColor = Color.FromArgb(68, 68, 68);
+            buttonSubmenuPagos.FlatAppearance.BorderSize = 0;
+            buttonSubmenuPagos.FlatStyle = FlatStyle.Flat;
+            buttonSubmenuPagos.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonSubmenuPagos.ForeColor = Color.White;
+            buttonSubmenuPagos.Location = new Point(0, 511);
+            buttonSubmenuPagos.Name = "buttonSubmenuPagos";
+            buttonSubmenuPagos.Padding = new Padding(10, 0, 0, 0);
+            buttonSubmenuPagos.Size = new Size(325, 60);
+            buttonSubmenuPagos.TabIndex = 5;
+            buttonSubmenuPagos.Text = "Pagos";
+            buttonSubmenuPagos.TextAlign = ContentAlignment.MiddleLeft;
+            buttonSubmenuPagos.UseVisualStyleBackColor = false;
+            buttonSubmenuPagos.Click += buttonSubmenuPagos_Click;
             // 
             // panelPrestamosSubmenu
             // 
@@ -221,6 +286,7 @@
             // 
             pictureBox2.Dock = DockStyle.Fill;
             pictureBox2.Image = Properties.Resources.enterprise;
+            pictureBox2.InitialImage = Properties.Resources.enterprise1;
             pictureBox2.Location = new Point(0, 0);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(325, 150);
@@ -241,77 +307,13 @@
             // 
             pictureBox1.Dock = DockStyle.Fill;
             pictureBox1.Image = Properties.Resources.enterprise;
+            pictureBox1.InitialImage = Properties.Resources.enterprise2;
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(933, 712);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
-            // 
-            // buttonSubmenuPagos
-            // 
-            buttonSubmenuPagos.BackColor = Color.FromArgb(51, 51, 51);
-            buttonSubmenuPagos.Dock = DockStyle.Top;
-            buttonSubmenuPagos.FlatAppearance.BorderColor = Color.FromArgb(68, 68, 68);
-            buttonSubmenuPagos.FlatAppearance.BorderSize = 0;
-            buttonSubmenuPagos.FlatStyle = FlatStyle.Flat;
-            buttonSubmenuPagos.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonSubmenuPagos.ForeColor = Color.White;
-            buttonSubmenuPagos.Location = new Point(0, 511);
-            buttonSubmenuPagos.Name = "buttonSubmenuPagos";
-            buttonSubmenuPagos.Padding = new Padding(10, 0, 0, 0);
-            buttonSubmenuPagos.Size = new Size(325, 60);
-            buttonSubmenuPagos.TabIndex = 5;
-            buttonSubmenuPagos.Text = "Pagos";
-            buttonSubmenuPagos.TextAlign = ContentAlignment.MiddleLeft;
-            buttonSubmenuPagos.UseVisualStyleBackColor = false;
-            buttonSubmenuPagos.Click += buttonSubmenuPagos_Click;
-            // 
-            // panelPagosSubmenu
-            // 
-            panelPagosSubmenu.Controls.Add(buttonConsultaPagos);
-            panelPagosSubmenu.Controls.Add(buttonRegistroPagos);
-            panelPagosSubmenu.Dock = DockStyle.Top;
-            panelPagosSubmenu.Location = new Point(0, 571);
-            panelPagosSubmenu.Name = "panelPagosSubmenu";
-            panelPagosSubmenu.Size = new Size(325, 121);
-            panelPagosSubmenu.TabIndex = 6;
-            // 
-            // buttonConsultaPagos
-            // 
-            buttonConsultaPagos.BackColor = Color.FromArgb(85, 85, 85);
-            buttonConsultaPagos.Dock = DockStyle.Top;
-            buttonConsultaPagos.FlatAppearance.BorderColor = Color.FromArgb(85, 85, 85);
-            buttonConsultaPagos.FlatAppearance.BorderSize = 0;
-            buttonConsultaPagos.FlatStyle = FlatStyle.Flat;
-            buttonConsultaPagos.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonConsultaPagos.ForeColor = Color.White;
-            buttonConsultaPagos.Location = new Point(0, 60);
-            buttonConsultaPagos.Name = "buttonConsultaPagos";
-            buttonConsultaPagos.Padding = new Padding(35, 0, 0, 0);
-            buttonConsultaPagos.Size = new Size(325, 60);
-            buttonConsultaPagos.TabIndex = 1;
-            buttonConsultaPagos.Text = "Consulta de Préstamos";
-            buttonConsultaPagos.TextAlign = ContentAlignment.MiddleLeft;
-            buttonConsultaPagos.UseVisualStyleBackColor = false;
-            // 
-            // buttonRegistroPagos
-            // 
-            buttonRegistroPagos.BackColor = Color.FromArgb(85, 85, 85);
-            buttonRegistroPagos.Dock = DockStyle.Top;
-            buttonRegistroPagos.FlatAppearance.BorderColor = Color.FromArgb(85, 85, 85);
-            buttonRegistroPagos.FlatAppearance.BorderSize = 0;
-            buttonRegistroPagos.FlatStyle = FlatStyle.Flat;
-            buttonRegistroPagos.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonRegistroPagos.ForeColor = Color.White;
-            buttonRegistroPagos.Location = new Point(0, 0);
-            buttonRegistroPagos.Name = "buttonRegistroPagos";
-            buttonRegistroPagos.Padding = new Padding(35, 0, 0, 0);
-            buttonRegistroPagos.Size = new Size(325, 60);
-            buttonRegistroPagos.TabIndex = 0;
-            buttonRegistroPagos.Text = "Registro de Préstamos";
-            buttonRegistroPagos.TextAlign = ContentAlignment.MiddleLeft;
-            buttonRegistroPagos.UseVisualStyleBackColor = false;
             // 
             // Form1
             // 
@@ -329,13 +331,13 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Sistema de Gestión de Empresa";
             panelSideMenu.ResumeLayout(false);
+            panelPagosSubmenu.ResumeLayout(false);
             panelPrestamosSubmenu.ResumeLayout(false);
             panelClientesSubmenu.ResumeLayout(false);
             panelLogo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panelContenedor.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            panelPagosSubmenu.ResumeLayout(false);
             ResumeLayout(false);
         }
 

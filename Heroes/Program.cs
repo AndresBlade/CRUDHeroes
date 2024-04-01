@@ -1,4 +1,4 @@
-namespace Heroes
+namespace Empresa
 {
     internal static class Program
     {

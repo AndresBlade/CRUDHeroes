@@ -9,10 +9,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Update="AgregarDirector - Copia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ConsultaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="RegistroCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="RegistroPrestamo.cs">
+      <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
 
